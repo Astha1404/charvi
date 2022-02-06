@@ -1,0 +1,10 @@
+.carousel-image
+{
+    height: 100vh !important;
+    overflow: hidden;
+}
+
+.carousel-image img
+{
+    transform: scale(1,0.7) translateY(-450px);
+}
