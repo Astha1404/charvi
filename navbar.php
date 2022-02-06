@@ -39,10 +39,10 @@
           <div class="d-flex">
             <button class="btn btn-success mx-2" type="button"  data-bs-toggle="modal" data-bs-target="#login">Login</button>
             <button class="btn btn-primary mx-2" type="button" data-bs-toggle="modal" data-bs-target="#register">Register</button>
-            <?php require 'login_modal.php'?>
-            <?php require 'register_modal.php'?>
           </div>
         </div>
       </div>
     </nav>
 </header>
+<?php require 'login_modal.php'?>
+<?php require 'register_modal.php'?>
