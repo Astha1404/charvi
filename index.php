@@ -7,6 +7,7 @@
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="Assets/Stylesheets/navbar.css">
     <link rel="stylesheet" type="text/css" href="Assets/Stylesheets/carousel.css">
+    <link rel="stylesheet" type="text/css" href="Assets/Stylesheets/item-menu.css">
     <link rel="stylesheet" type="text/css" href="Assets/Stylesheets/owl.carousel.css">
     <link rel="stylesheet" type="text/css" href="Assets/Stylesheets/owl.theme.green.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -25,5 +26,6 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="Assets/Javascripts/owl.carousel.js"></script>
 <script src="Assets/Javascripts/carousel.js"></script>
+<script src="Assets/Javascripts/menu-list.js"></script>
 <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 </html>
