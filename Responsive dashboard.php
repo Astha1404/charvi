@@ -1,14 +1,12 @@
 <!doctype html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <title>Responsive dashboard</title>
     <meta name="viewport" content="width=device=width,initial-scale=1.0">
-            <link rel="stylesheet" href="styled.css">
-          
-            <!---Boxicone cdn link-->
-            <link rel='stylesheet' href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css'>
+    <link rel="stylesheet" href="Assets/Stylesheets/dashboard.css">          
+    <!---Boxicone cdn link-->
+    <link rel='stylesheet' href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css'>
 </head>
 
 <body>

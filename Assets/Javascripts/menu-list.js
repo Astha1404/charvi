@@ -38,13 +38,13 @@ $(document).ready(function (){
             },
             1200:
             {
-                items:6,
+                items:5,
                 margin:270,
                 stagePadding:0
             },
             2000:
             {
-                items:7,
+                items:6,
                 margin:270,
                 stagePadding:0
             }
