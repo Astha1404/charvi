@@ -11,7 +11,7 @@
     </div>
     <div>
         <label for="description">Enter description : </label>
-        <input type="description" name="description" id="description">
+        <textarea name="description" id="description" cols="30" rows="10"></textarea>
     </div>
     <div>
         <label for="quantity">Enter quantity : </label>
