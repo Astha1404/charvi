@@ -47,19 +47,19 @@ $(document).ready(function (){
             {
                 items:4,
                 margin:250,
-                stagePadding:50
+                stagePadding:20
             },
             1100:
             {
-                items:5,
+                items:4,
                 margin:70,
-                stagePadding:50
+                stagePadding:10
             },
             1200:
             {
-                items:5,
+                items:4,
                 margin:20,
-                stagePadding:50
+                stagePadding:10
             },
             2000:
             {
