@@ -63,7 +63,7 @@ $(document).ready(function (){
             },
             2000:
             {
-                items:6,
+                items:5,
                 margin:50,
                 stagePadding:50
             }
