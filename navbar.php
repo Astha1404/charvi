@@ -1,3 +1,6 @@
+<?php
+    require 'dbconnection.php';
+?>
 
 <header>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top">
@@ -23,12 +26,18 @@
                 Categories
               </a>
               <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">Chikki</a></li>
-                <li><a class="dropdown-item" href="#">Kacharyu</a></li>
-                <li><a class="dropdown-item" href="#">Namkins</a></li>
-                <li><a class="dropdown-item" href="#">Laddu</a></li>
-                <li><a class="dropdown-item" href="#">Dates</a></li>
-                <li><a class="dropdown-item" href="#">Papad</a></li>
+                <?php
+                  $sql = "SELECT * FROM category";
+                  $result = mysqli_query($con,$sql);
+                  if(mysqli_num_rows($result)>0)
+                  {
+                      while(($row = mysqli_fetch_assoc($result))!=null)
+                      {
+                          echo "<li><a class='dropdown-item' href={$row['CATEGORY_ID']}>{$row['CATEGORY_NAME']}</a></li>";
+                          // die(print_r($row));
+                      }
+                  }
+                ?>
               </ul>
             </li>
             <li class="nav-item">
