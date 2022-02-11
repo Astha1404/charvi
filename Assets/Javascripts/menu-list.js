@@ -3,25 +3,38 @@ $(document).ready(function (){
     let next = '<span style="font-size:70px;padding: 0px 20px 0px 20px;"><div class="menu-overlay-prev"></div><i class="fas fa-chevron-left"></i></span>';
     $('.menulist-carousel').owlCarousel({
         loop:false,
+        center:false,
         nav:false,
         navText:[next,prev],
         responsive:{
             200:
             {
-                items:2,
-                margin:250,
-                stagePadding:0
+                items:1,
+                margin:0,
+                stagePadding:20
+            },
+            300:
+            {
+                items:1,
+                margin:0,
+                stagePadding:50
             },
             400:
             {
                 items:2,
-                margin:150,
+                margin:20,
+                stagePadding:0
+            },
+            500:
+            {
+                items:2,
+                margin:0,
                 stagePadding:0
             },
             600:
             {
                 items:3,
-                margin:270,
+                margin:170,
                 stagePadding:0
             },
             900:
@@ -32,21 +45,27 @@ $(document).ready(function (){
             },
             1000:
             {
+                items:4,
+                margin:250,
+                stagePadding:50
+            },
+            1100:
+            {
                 items:5,
-                margin:270,
-                stagePadding:0
+                margin:70,
+                stagePadding:50
             },
             1200:
             {
                 items:5,
-                margin:270,
-                stagePadding:0
+                margin:20,
+                stagePadding:50
             },
             2000:
             {
                 items:6,
-                margin:270,
-                stagePadding:0
+                margin:50,
+                stagePadding:50
             }
         }
     })
