@@ -6,6 +6,7 @@ $(document).ready(function (){
         center:false,
         nav:false,
         navText:[next,prev],
+        autoWidth:true,
         responsive:{
             200:
             {
@@ -15,32 +16,32 @@ $(document).ready(function (){
             },
             300:
             {
-                items:1,
+                items:2,
                 margin:0,
                 stagePadding:50
             },
             400:
             {
-                items:2,
+                items:4,
                 margin:20,
-                stagePadding:0
+                stagePadding:20
             },
             500:
             {
-                items:2,
-                margin:0,
+                items:4,
+                margin:20,
                 stagePadding:0
             },
             600:
             {
-                items:3,
-                margin:170,
+                items:4,
+                margin:10,
                 stagePadding:0
             },
             900:
             {
                 items:4,
-                margin:270,
+                margin:10,
                 stagePadding:0
             },
             1000:
