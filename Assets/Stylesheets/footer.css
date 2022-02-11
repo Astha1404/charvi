@@ -1,0 +1,22 @@
+.footer
+{
+    background-color: rgb(230, 198, 157) !important;
+    margin: 0;
+    padding: 0 !important;
+}
+
+.footer-links a
+{
+    text-decoration: none !important;
+    color: #444 !important;
+    font-weight: 500 !important;
+}
+
+.footer div:nth-child(even)
+{
+    background-color: rgb(247, 229, 204) !important;
+}
+.footer div:nth-child(odd)
+{
+    background-color: rgb(206, 168, 118) !important;
+}
