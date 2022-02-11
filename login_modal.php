@@ -8,13 +8,13 @@
             </div>
             <div class="modal-body">
             <form action="#" class="needs-validation">
-                <div class="mb-4">
+                <div class="mb-4 form-floating">
+                    <input type="email" class="form-control" id="userName" name="userName" placeholder="User Name" required>
                     <label for="userName">User Name</label>
-                    <input type="text" class="form-control" id="userName" name="userName" required>
                 </div>
-                <div class="mb-4">
+                <div class="mb-4 form-floating">
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
                     <label for="password">Password</label>
-                    <input type="password" class="form-control" id="password" name="password" required>
                 </div>
             </div>
             <div class="modal-footer">

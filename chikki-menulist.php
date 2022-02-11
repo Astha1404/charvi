@@ -1,5 +1,5 @@
 <div class="container-fluid my-5 mx-0 px-2">
-    <h1 class="display-6 text-secondary text-center mb-4"><span class="border-bottom border-5 mb-4">Chikki</span></h1>
+    <h1 class="display-6 text-secondary text-center mb-4"><span class="border-bottom border-5 mb-4" style="border-color:rgb(230, 198, 157);">Chikki</span></h1>
     <div class="menulist-carousel owl-carousel mx-4 owl-theme">
         
     <?php

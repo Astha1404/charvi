@@ -1,12 +1,12 @@
-<div class="container mw-75 nav-justified">
+<div class="container mw-75 my-4 nav-justified">
     <ul class="nav nav-tabs">
-        <li class="nav-item">
+        <li class="nav-item tab-item">
             <a class="nav-link active" data-bs-toggle="tab" href="#laddu">Laddu</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item tab-item">
             <a class="nav-link" data-bs-toggle="tab" href="#snacks">Snacks</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item tab-item">
             <a class="nav-link" data-bs-toggle="tab" href="#papad">Papad</a>
         </li>
     </ul>
