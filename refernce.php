@@ -1,109 +1,60 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing:border-box;
-    text-decoration: none;
-    font-family: poppins;
-}
+<!doctype html>
+<html lang="en">
 
-body{
-    min-height: 100vh;
-    width:100%
+<head>
+    <meta charset="utf-8">
+    <title>temp_cat</title>
+    <link rel="stylesheet" href="css/temp_cat.css">
+    <meta name="viewport" content="width=device=width,initial-scale=1.0">
+    <link rel='stylesheet' href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css'>
 
-}
-div.sidebar
-{  
-    position: fixed;
-    height:100%;
-    width:100px;
-    background-color:steelblue;
-    transition: all 0.5s ease;
-}
+    </head>
+<body>
+<div class="sidebar">
+           <ul class="nav-links">
+            <li>
+                <a href="#">
+                   <span class="link_name">Chikki</span>
+                </a>
+            </li>
 
-.sidebar .active
-{
-    width:50px;
-}
+            <li>
+                <a href="#">
+                <span class="link_name">Kachriyu</span>
+                </a>
+            </li>
 
-}
-.sidebar ul.nav-links
-{
-    margin-top: 15px;
-}
+            <li>
+                <a href="pro2_deatil.php">
+                <span class="link_name">Namkeen</span>
+                </a>
+            </li>
 
-.sidebar .nav-links li
-{
-    height: 35px;
-    width: 240px;
-    list-style: none;
-}
+            <li>
+                <a href="product_deatil.php">
+                <span class="link_name">Ladoo</span>
+                   
+                </a>
+            </li>
 
-.sidebar .nav-links li a
-{
-   /* background-color:red;*/
-    height: 40px;
-    width: 100px;
-    display:flex;
-    align-items: center;
-    text-decoration: none;
-    /*transition:all 0.4s ease;*/
-}
-.sidebar .nav-links li a:hover
-{
-    background-color:mediumblue ;
-}
+            <li>
+                <a href="product_deatil.php">
+                <span class="link_name">Papad</span>
+                   
+                </a>
+            </li>
+</ul>
+</div>
 
-.sidebar .nav-links li a i
-{
-   /* background-color:yellowgreen;*/
-    min-width: 50px;
-    text-align: center;
-    color: white;
-    font-size: 18px;
-    margin-right:10px
-}
+<section class="home-section">
+    <nav>
+        <div class="sidebar-button">
+            <i class="bx bx-menu sidebarBtn"></i>
+        </div>
+        </section>
+<script src="script.js">
 
-.sidebar .nav-links li a .link_name
-{    margin-left: 5px;
-    color:white;
-    font-size: 16px;
-    font-weight: 400;
-    white-space: nowrap;
+</script>
 
-}
-/*************/
-.home-section
-{
-    background:whitesmoke ;
-    position: relative;
-    height:100%;
-    min-height: 100vh;
-    width:calc(100%-100px);
-    left: 100px;
-    transition: all 0.5s ease;
-}
-
-.sidebar.active ~ .home-section{
-    width:calc(100% -100px);
-    left:6px;
-}
-
-.home-section nav{
-    height:80px ;
-    background-color:white ;
-    padding: 0 20px;
-    display: flex;
-    align-items:center ;
-}
-
-.home-section nav .sidebar-button{
-    display: flex;
-    align-items: center;
-    font-size: 20px;
-    font-weight: 500;
-}
-.home-section nav .sidebar-button i
-{
-    font-size: 34px;
-    margin-right: 10px;
-}
+</body>
+</html>
