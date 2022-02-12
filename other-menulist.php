@@ -1,10 +1,10 @@
 <div class="container-fluid my-5 mx-0 px-2">
-    <h1 class="display-6 text-secondary text-center mb-4"><span class="border-bottom border-5 mb-4" style="border:rgb(230, 198, 157) ;">Chikki</span></h1>
+    <h1 class="display-6 text-secondary text-center mb-4"><span class="border-bottom border-5 mb-4" style="border:rgb(230, 198, 157) ;">Other Items</span></h1>
     <div class="menulist-carousel owl-carousel mx-4 owl-theme">
         
     <?php
         require 'dbconnection.php';
-        $sql = "SELECT `PRODUCT_ID`, `PRODUCT_NAME`, `PRICE`, `DESCRIPTION`, `QUANTITY`, `IMAGE` FROM product WHERE `CATEGORY_ID` = (SELECT CATEGORY_ID FROM category WHERE category_name = 'CHIKKI') LIMIT 5";
+        $sql = "SELECT `PRODUCT_ID`, `PRODUCT_NAME`, `PRICE`, `DESCRIPTION`, `QUANTITY`, `IMAGE` FROM product ORDER BY RAND() LIMIT 10";
         $result = mysqli_query($con,$sql);
         if($result)
         {

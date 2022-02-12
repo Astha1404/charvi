@@ -29,5 +29,5 @@
     </div>
 </div>
 <div class="container-fluid footer">
-    <h6 class="text-center py-2">@Copyright Charvi Gruh Udhyog</h6>
+    <h6 class="text-center py-2 my-0">@Copyright Charvi Gruh Udhyog</h6>
 </div>

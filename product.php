@@ -10,12 +10,12 @@
 <body>
     <?php
         require_once 'navbar.php';
-        require_once 'carousel.php';
-        require_once 'chikki-menulist.php';
-        require_once 'kacharyu-menulist.php';
-        require_once 'item-menu.php';
-        require_once 'footer.php';
     ?>
+    <div class="container-fluid p-0 mb-4 mx-0 pb-4 row">
+        <?php require_once 'product_content.php'; ?>
+    </div>
+    <?php require_once 'other-menulist.php'; ?>
+    <?php require_once 'footer.php' ?>
 </body>
-    <?php require_once 'scripts.php' ?>
+    <?php require_once 'scripts.php'; ?>
 </html>
