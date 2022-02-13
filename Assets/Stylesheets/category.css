@@ -1,0 +1,30 @@
+.categoryName,
+.pagination .page-item.active .page-link
+{
+    background: rgb(223, 175, 116) !important;
+}
+.pagination .page-item .page-link
+{
+    background: rgb(255, 213, 150);
+    color: #111;
+    border: #111;
+}
+.page-item:hover> .page-link
+{
+    background: rgb(242, 200, 148) !important;
+}
+@media (max-width:700px)
+{
+    .categoryDisplayArea
+    {
+        width: 100% !important;
+    }
+}
+
+@media (min-width:1200px)
+{
+    .categoryDisplayArea
+    {
+        width: 75% !important;
+    }
+}

@@ -3,6 +3,7 @@
 <link rel="stylesheet" type="text/css" href="Assets/Stylesheets/navbar.css">
 <link rel="stylesheet" type="text/css" href="Assets/Stylesheets/footer.css">
 <link rel="stylesheet" type="text/css" href="Assets/Stylesheets/carousel.css">
+<link rel="stylesheet" type="text/css" href="Assets/Stylesheets/category.css">
 <link rel="stylesheet" type="text/css" href="Assets/Stylesheets/item-menu.css">
 <link rel="stylesheet" type="text/css" href="Assets/Stylesheets/owl.carousel.css">
 <link rel="stylesheet" type="text/css" href="Assets/Stylesheets/owl.theme.green.css">

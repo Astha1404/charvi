@@ -33,8 +33,7 @@
                   {
                       while(($row = mysqli_fetch_assoc($result))!=null)
                       {
-                          echo "<li><a class='dropdown-item' href={$row['CATEGORY_ID']}>{$row['CATEGORY_NAME']}</a></li>";
-                          // die(print_r($row));
+                          echo "<li><a class='dropdown-item' href={$category_page}?cid={$row['CATEGORY_ID']}>{$row['CATEGORY_NAME']}</a></li>";
                       }
                   }
                 ?>
