@@ -21,7 +21,22 @@
     }
 }
 
-@media (min-width:1200px)
+@media (max-width:1100px)
+{
+    .categoryDisplayArea
+    {
+        width: 100% !important;
+    }
+}
+@media (max-width:1200px)
+{
+    .categoryDisplayArea
+    {
+        width: 95% !important;
+    }
+}
+
+@media (min-width:1201px)
 {
     .categoryDisplayArea
     {

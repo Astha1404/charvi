@@ -31,5 +31,16 @@
             }
         ?>
         
+        <div class='item d-flex justify-content-center'>
+            <div class='card m-4 d-flex align-items-center justify-content-center overflow-hidden' style='width:16rem;'>
+                <?php 
+                    $sql = "SELECT category_id FROM category WHERE category_name = 'CHIKKI'";
+                    $result = mysqli_query($con,$sql);
+                    $row = mysqli_fetch_assoc($result);
+                    $cid = $row['category_id'];
+                ?>
+                <a href="<?php echo "{$category_page}?cid={$cid}"; ?>" class="stretched-link"><img src='Assets/Images/viewmore.jpeg' class='card-img' style="transform:scale(1.2);"></a>
+            </div>
+        </div>
     </div>
 </div>

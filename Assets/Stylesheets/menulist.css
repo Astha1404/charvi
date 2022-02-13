@@ -1,0 +1,10 @@
+.view-more .card
+{
+    height: 100%;
+    width: 16rem;
+}
+
+.item
+{
+    min-height: 27rem !important;
+}

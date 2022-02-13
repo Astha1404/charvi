@@ -103,11 +103,16 @@
         <?php echo
             "<nav aria-label='Page navigation example'>
                 <ul class='pagination justify-content-center pagination-lg'>";
-                    // <li class='page-item'>
-                    // <a class='page-link' href='#' aria-label='Previous'>
-                    //     <span aria-hidden='true'>Prev</span>
-                    // </a>
-                    // </li>
+                    $pageNumber = isset($_GET['page'])?$_GET['page']:1;
+                    if($pageNumber!=1)
+                    {
+                        $prev = $pageNumber-1;
+                        echo "<li class='page-item'>
+                                <a class='page-link' href='{$category_page}?page={$next}&cid={$_GET['cid']}' aria-label='Previous'>
+                                    <span aria-hidden='true'>Prev</span>
+                                </a>
+                            </li>";
+                    }
                     $pageNo = $_GET['page'];
                     $pages = ceil($numberOfRecords/$limit);
                     for($pno = 1; $pno<=$pages; $pno++)
@@ -125,13 +130,12 @@
                             echo "<li class='page-item'><a class='page-link' href='{$category_page}?page={$pno}&cid={$_GET['cid']}'>{$pno}</a></li>";
                         }
                     }
-                    $pageNumber = isset($_GET['page'])?$_GET['page']:1;
                     if($pageNumber!=$pages)
                     {
                         $next = $pageNumber+1;
                         echo "<li class='page-item'>
                                 <a class='page-link' href='{$category_page}?page={$next}&cid={$_GET['cid']}' aria-label='Next'>
-                                    <span aria-hidden='Next'>Next</span>
+                                    <span aria-hidden='true'>Next</span>
                                 </a>
                             </li>";
                     }
