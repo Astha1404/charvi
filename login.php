@@ -13,7 +13,7 @@
         if(isset($_POST['submit']) && !isset($_SESSION['email']))
         {
             session_start();
-            $sql = "SELECT * FROM user WHERE email = '".$_POST['userName']."' and password = '".$_POST['password']."'";
+            $sql = "SELECT * FROM user WHERE email = '".$_POST['userName']."' and password = '".md5($_POST['password'])."'";
             $result = mysqli_query($con,$sql);
             if(mysqli_num_rows($result)!=1)
             {

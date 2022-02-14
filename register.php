@@ -28,7 +28,7 @@
             $_SESSION['Rname'] = mysqli_real_escape_string($con,$_POST['userName']);
             $_SESSION['Remail'] = mysqli_real_escape_string($con,$_POST['email']);
             $_SESSION['Rnumber'] = mysqli_real_escape_string($con,$_POST['mobileNumber']);
-            $_SESSION['Rpwd'] = mysqli_real_escape_string($con,$_POST['password']);
+            $_SESSION['Rpwd'] = md5(mysqli_real_escape_string($con,$_POST['password']));
             $_SESSION['randomOTP'] = random_int(100000,999999);
         }
         else
