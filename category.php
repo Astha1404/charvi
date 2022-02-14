@@ -108,7 +108,7 @@
                     {
                         $prev = $pageNumber-1;
                         echo "<li class='page-item'>
-                                <a class='page-link' href='{$category_page}?page={$next}&cid={$_GET['cid']}' aria-label='Previous'>
+                                <a class='page-link' href='{$category_page}?page={$prev}&cid={$_GET['cid']}' aria-label='Previous'>
                                     <span aria-hidden='true'>Prev</span>
                                 </a>
                             </li>";
