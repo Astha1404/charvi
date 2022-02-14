@@ -27,6 +27,7 @@
             if(mysqli_num_rows($result)!=0)
             {
                 $error = "Email Address Already Taken!!";
+                header("Location: /charvi/register.php?error={$error}");
             }
             $_SESSION['Rname'] = mysqli_real_escape_string($con,$_POST['userName']);
             $_SESSION['Remail'] = mysqli_real_escape_string($con,$_POST['email']);
