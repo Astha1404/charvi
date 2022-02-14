@@ -47,7 +47,7 @@
             if($_SESSION['randomOTP'] != $_POST['otp'])
             {
                 $error="OTP didn't match";
-                header("Location: /charvi/register.php?error={$error}");
+                header("Location: /charvi/register.php?error={$error} & otperror=1");
             }
             else
             {
@@ -82,7 +82,7 @@
             
             // die();
         }
-        if((!isset($_POST['registration']) || isset($error)) && !isset($_POST['otpsubmit']))
+        if((!isset($_POST['registration']) || isset($error)) && !isset($_POST['otpsubmit']) && !isset($_GET['otperror']))
         {
             require_once 'registration-form.php';
         }
