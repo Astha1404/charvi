@@ -15,7 +15,7 @@
                 <label for="mobileNumber">Enter Your Mobile Number</label>
             </div>
             <div class="mb-4 form-floating col-md-8 col-sm-12 col-11">
-            <input type="password" class="form-control required" id="password" name="password" placeholder="Enter Your Password" required>
+            <input type="text" class="form-control required" id="password" name="password" placeholder="Enter Your Password" required>
                     <label for="password">Enter Your Password</label>
             </div>
             <div class="mb-4 form-floating col-md-8 col-sm-12 col-11">
