@@ -113,7 +113,7 @@
                                 </a>
                             </li>";
                     }
-                    $pageNo = $_GET['page'];
+                    $pageNo = isset($_GET['page'])?$_GET['page']:1;
                     $pages = ceil($numberOfRecords/$limit);
                     for($pno = 1; $pno<=$pages; $pno++)
                     {
