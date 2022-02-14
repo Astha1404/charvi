@@ -90,8 +90,7 @@
         else
         {
             if(isset($_SESSION['randomOTP']))
-            {
-                echo $_SESSION['randomOTP']; 
+            { 
                 require_once 'otp-form.php';  
             }
         }
