@@ -60,7 +60,7 @@
         $mail->Body    = "<h4>Your OTP For Verification is : <b>{$_SESSION['randomOTP']}</b></h4>";
 
         if(!$mail->send()) {
-            $error='Message could not be sent.'.'\nMailer Error: ' . $mail->ErrorInfo;
+            $error='Message could not be sent. Server Unreachable !';
             header("Location: /charvi/register.php?error={$error} & otperror=1 & mailerror=1");
         }
         else
