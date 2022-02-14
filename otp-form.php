@@ -35,6 +35,14 @@
     //     header("Location: /charvi/register.php?error={$error} & otperror=1 & mailerror=1");
 
     // }
+    if(!isset($_SESSION))
+    {
+        session_start();
+    }
+    if(!isset($_SESSION['randomOTP']))
+    {
+        header('Location: /charvi/register.php');
+    }
     require 'Assets/Mailer/PHPMailerAutoload.php';
     if(!isset($_GET['mailerror']) && !isset($_GET['otpsuccess']))
     {
@@ -69,8 +77,9 @@
             header("Location: /charvi/register.php?success={$success}&otpsuccess=1");
         }
     }
+    if(!isset($_GET['success']) && !isset($_GET['successstatus']))
+    {
 ?>
-
 <section class="my-4">
     <div class="container col-md-6 col-sm-12 col-12">
         <h1 class="text-center">Enter OTP</h1>
@@ -85,3 +94,6 @@
         </form>
     </div>
 </section>
+<?php
+    }
+?>
