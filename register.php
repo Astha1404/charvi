@@ -58,7 +58,6 @@
         }
         if(isset($success))
         {
-            require_once 'success.php';
             $name = $_SESSION['Rname'];
             unset($_SESSION['Rname']);
             $email = $_SESSION['Remail'];
@@ -79,6 +78,7 @@
                 {
                     unset($_SESSION['randomOTP']);
                     unset($POST);
+                    require_once 'success.php';
                     header("Location: /charvi/index.php?success={$success}");
                 }
             }
