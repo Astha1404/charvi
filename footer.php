@@ -13,7 +13,7 @@
                   {
                       while(($row = mysqli_fetch_assoc($result))!=null)
                       {
-                          echo "<li><a class='text-center' href={$category_page}?cid={$row['CATEGORY_ID']}>{$row['CATEGORY_NAME']}</a></li>";
+                          echo "<a class='text-center' href={$category_page}?cid={$row['CATEGORY_ID']}>{$row['CATEGORY_NAME']}</a>";
                       }
                   }
                 ?>
