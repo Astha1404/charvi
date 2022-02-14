@@ -9,7 +9,10 @@
 </head>
 <body>
     <?php
-        session_start();
+        if(!isset($_SESSION))
+        {
+            session_start();
+        }
         require_once 'dbconnection.php';
         require_once 'navbar.php';
         if(isset($_SESSION['email']))
@@ -88,7 +91,10 @@
         }
         else
         {
-            echo $_SESSION['randomOTP'];
+            if(isset($_SESSION['randomOTP']))
+            {
+                echo $_SESSION['randomOTP'];   
+            }
             require_once 'otp-form.php';
         }
         require_once 'footer.php'

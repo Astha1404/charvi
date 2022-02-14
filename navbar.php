@@ -4,7 +4,10 @@
 
 <header>
     <?php 
-        session_start();
+        if(!isset($_SESSION))
+        {
+            session_start();
+        }
     ?>
     <nav class="navbar navbar-expand-md navbar-dark">
       <div class="container-fluid">
