@@ -39,6 +39,7 @@
             if(isset($_POST['registration']))
             {
                 $error = "Password Didn't Match";
+                header("Location: /charvi/register.php?error={$error}");
             }
         }
         if(isset($_POST['otpsubmit']))
