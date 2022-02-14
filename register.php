@@ -52,10 +52,6 @@
                 $success="Registration Successful";
             }
         }
-        if(isset($error))
-        {
-            require_once 'error.php';
-        }
         if(isset($success))
         {
             $name = $_SESSION['Rname'];
@@ -78,7 +74,6 @@
                 {
                     unset($_SESSION['randomOTP']);
                     unset($POST);
-                    require_once 'success.php';
                     header("Location: /charvi/index.php?success={$success}");
                 }
             }
@@ -93,9 +88,18 @@
         {
             if(isset($_SESSION['randomOTP']))
             {
-                echo $_SESSION['randomOTP'];   
+                echo $_SESSION['randomOTP']; 
+                require_once 'otp-form.php';  
             }
-            require_once 'otp-form.php';
+            else
+            {
+                // header("Location: /charvi/register.php?error={$error}");
+            }
+        }
+        if(isset($_GET['error']))
+        {
+            $error = $_GET['error'];
+            require_once 'error.php';
         }
         require_once 'footer.php'
     ?>
