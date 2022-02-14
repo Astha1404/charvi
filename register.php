@@ -55,7 +55,7 @@
                 $success="Registration Successful";
             }
         }
-        if(isset($success))
+        if(isset($success) && !isset($_GET['otpsuccess']))
         {
             $name = $_SESSION['Rname'];
             unset($_SESSION['Rname']);
@@ -83,7 +83,7 @@
             
             // die();
         }
-        if((!isset($_POST['registration']) || isset($error)) && !isset($_POST['otpsubmit']) && !isset($_GET['otperror']))
+        if((!isset($_POST['registration']) || isset($_GET['error'])) && !isset($_POST['otpsubmit']) && !isset($_GET['otperror']) && !isset($_GET['otpsuccess']))
         {
             require_once 'registration-form.php';
         }
@@ -98,6 +98,11 @@
         {
             $error = $_GET['error'];
             require_once 'error.php';
+        }
+        if(isset($_GET['success']) && isset($_GET['otpsuccess']))
+        {
+            $error = $_GET['success'];
+            require_once 'success.php';
         }
         require_once 'footer.php'
     ?>
