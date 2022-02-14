@@ -6,11 +6,17 @@
         </div>
         <div class="col-md-3 col-lg-3 col-sm-4 col-12 py-2 d-flex flex-column footer-links text-md-start">
             <h4 class="text-secondary py-2 text-center">Useful Links</h4>
-            <a href="#" class="text-center">Chikki</a>
-            <a href="#" class="text-center">Kachriyu</a>
-            <a href="#" class="text-center">Laddu</a>
-            <a href="#" class="text-center">Snacks</a>
-            <a href="#" class="text-center">Papad</a>
+            <?php
+                  $sql = "SELECT * FROM category";
+                  $result = mysqli_query($con,$sql);
+                  if(mysqli_num_rows($result)>0)
+                  {
+                      while(($row = mysqli_fetch_assoc($result))!=null)
+                      {
+                          echo "<li><a class='text-center' href={$category_page}?cid={$row['CATEGORY_ID']}>{$row['CATEGORY_NAME']}</a></li>";
+                      }
+                  }
+                ?>
         </div>
         <div class="col-md-3 col-lg-3 col-sm-4 col-12 py-2 text-center footer-links text-md-start text-sm-center">
             <div>
