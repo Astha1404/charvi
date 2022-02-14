@@ -1,10 +1,10 @@
 <footer>
     <div class="container-fluid d-flex flex-wrap footer">
-        <div class="col-lg-3 col-sm-12 col-12 text-center text-md-start">
+        <div class="col-md-3 col-lg-3 col-sm-12 text-center text-md-start">
             <h2 class="text-secondary py-2 text-center">Company Name</h2>
             <p class="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod ut minima neque, tempore deserunt earum odio voluptas sunt porro in, nam vero excepturi consequatur odit quia ex? Animi, architecto dignissimos.</p>
         </div>
-        <div class="col-md-3 col-sm-4 col-12 py-2 d-flex flex-column footer-links text-md-start">
+        <div class="col-md-3 col-lg-3 col-sm-4 col-12 py-2 d-flex flex-column footer-links text-md-start">
             <h4 class="text-secondary py-2 text-center">Useful Links</h4>
             <a href="#" class="text-center">Chikki</a>
             <a href="#" class="text-center">Kachriyu</a>
@@ -12,7 +12,7 @@
             <a href="#" class="text-center">Snacks</a>
             <a href="#" class="text-center">Papad</a>
         </div>
-        <div class="col-md-3 col-sm-4 col-12 py-2 text-center footer-links text-md-start text-sm-center">
+        <div class="col-md-3 col-lg-3 col-sm-4 col-12 py-2 text-center footer-links text-md-start text-sm-center">
             <div>
                 <h4 class="text-secondary text-center py-2">Contact Us</h4>
                 <h6 class="text-center">Mobile : +91 1234567890</h6>
@@ -24,7 +24,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-3 col-sm-4 col-12 py-2 text-center text-md-start">
+        <div class="col-md-3 col-lg-3 col-sm-4 col-12 py-2 text-center text-md-start">
             <h4 class="text-secondary py-2 text-center">Address</h4>
             <P class="text-center">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, omnis!</P>
         </div>

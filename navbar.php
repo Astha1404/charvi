@@ -3,6 +3,9 @@
 ?>
 
 <header>
+    <?php 
+        session_start();
+    ?>
     <nav class="navbar navbar-expand-md navbar-dark">
       <div class="container-fluid">
         <a class="navbar-brand" href="index.php">
@@ -45,12 +48,21 @@
           </ul>
           <div class="col-2"></div>
           <div class="d-flex">
-            <button class="btn btn-success mx-2" type="button"  data-bs-toggle="modal" data-bs-target="#login">Login</button>
-            <button class="btn btn-primary mx-2" type="button" data-bs-toggle="modal" data-bs-target="#register">Register</button>
+            <?php 
+              if(!isset($_SESSION['email']))
+              {
+            ?>
+            <a class="btn btn-success mx-2" href="login.php">Login</a>
+            <a class="btn btn-primary mx-2" href="register.php">Register</a>
+            <?php 
+              }
+              else
+              { 
+                require_once 'userProfile.php';
+              } 
+            ?>
           </div>
         </div>
       </div>
     </nav>
 </header>
-<?php require 'login_modal.php'?>
-<?php require 'register_modal.php'?>

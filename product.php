@@ -14,8 +14,11 @@
     <div class="container-fluid p-0 mb-4 mx-0 pb-4 row">
         <?php require_once 'product_content.php'; ?>
     </div>
-    <?php require_once 'other-menulist.php'; ?>
-    <?php require_once 'footer.php' ?>
+    <?php
+        require_once 'other-menulist.php';
+        require_once 'userProfileMenu.php';
+        require_once 'footer.php';
+    ?>
 </body>
     <?php require_once 'scripts.php'; ?>
 </html>

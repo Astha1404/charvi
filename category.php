@@ -143,7 +143,11 @@
             </nav>";
         ?>
     </div>
-    <?php require_once 'footer.php' ?>
+
+    <?php 
+        require_once 'userProfileMenu.php';
+        require_once 'footer.php' 
+    ?>
     <?php } ?>
 </body>
     <?php require_once 'scripts.php'; ?>
