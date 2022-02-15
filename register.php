@@ -77,7 +77,7 @@
                 {
                     unset($_SESSION['randomOTP']);
                     unset($POST);
-                    header("Location: /charvi/index.php?success={$success} & successstatus=1");
+                    header("Location: /charvi/index.php?success={$success}");
                 }
             }
             
