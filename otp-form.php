@@ -17,12 +17,15 @@
         $mail->isSMTP();                                      // Set mailer to use SMTP
         $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
         $mail->SMTPAuth = true;                               // Enable SMTP authentication
-        $mail->Username = '';                 // SMTP username
-        $mail->Password = '';                           // SMTP password
+        $sql = 'SELECT * FROM smtp';
+        $result = mysqli_query($con,$sql);
+        $row = mysqli_fetch_assoc($result);
+        $mail->Username = "{$row['email']}";                 // SMTP username
+        $mail->Password = "{$row['password']}";                           // SMTP password
         $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
         $mail->Port = 587;                                    // TCP port to connect to
 
-        $mail->setFrom('', 'Charvi');
+        $mail->setFrom("{$row['email']}", 'Charvi');
         $mail->addAddress("{$_SESSION['Remail']}", "{$_SESSION['Rname']}");     // Add a recipient
         $mail->addReplyTo('no-reply@gmail.com', 'Do Not Reply');
 
