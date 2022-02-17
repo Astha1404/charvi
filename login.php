@@ -10,7 +10,10 @@
 <body>
     <?php
         require_once 'dbconnection.php';
-        session_start();
+        if(!isset($_SESSION))
+        {   
+            session_start();
+        }
         if(isset($_SESSION['email']))
         {
             header('Location: /charvi/index.php');

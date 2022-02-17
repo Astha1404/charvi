@@ -1,6 +1,9 @@
 <?php
     require 'Assets/Mailer/PHPMailerAutoload.php';
-    session_start();
+    if(!isset($_SESSION))
+    {
+        session_start();
+    }
     if(isset($_SESSION['email']))
     {
         header('Location: /charvi/index.php');

@@ -1,5 +1,9 @@
 <?php
     require 'Assets/Mailer/PHPMailerAutoload.php';
+    if(!isset($_SESSION))
+    {   
+        session_start();
+    }
     if(isset($_SESSION['randomOTP']))
     {
         if(!isset($_GET['mailerror']) && !isset($_GET['otpsuccess']))
