@@ -14,7 +14,7 @@
         require_once 'chikki-menulist.php';
         require_once 'kacharyu-menulist.php';
         require_once 'item-menu.php';
-        require_once 'userProfileMenu.php';
+        require_once 'userDashboard.php';
         require_once 'footer.php';
 
         if(isset($_GET['success']))

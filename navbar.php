@@ -55,17 +55,17 @@
               if(!isset($_SESSION['email']))
               {
             ?>
-            <a class="btn btn-success mx-2" href="login.php">Login</a>
-            <a class="btn btn-primary mx-2" href="register.php">Register</a>
-            <?php 
-              }
-              else
-              { 
-                require_once 'userProfile.php';
-              } 
-            ?>
+                <a class="btn btn-success mx-2" href="login.php">Login</a>
+                <a class="btn btn-primary mx-2" href="register.php">Register</a>
           </div>
         </div>
       </div>
+      <?php 
+        }
+        else
+        { 
+          require_once 'LoginInfo.php';
+        } 
+      ?>
     </nav>
 </header>
