@@ -1,3 +1,12 @@
+<?php
+    session_start();
+    if(isset($_SESSION['email']))
+    {
+        header('Location: /charvi/index.php');
+    }
+?>
+
+
 <section class="my-4">
     <div class="container col-md-6 col-sm-12 col-12">
         <h1 class="text-center">Register</h1>

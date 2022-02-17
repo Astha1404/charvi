@@ -1,5 +1,10 @@
 <?php
     require 'Assets/Mailer/PHPMailerAutoload.php';
+    session_start();
+    if(isset($_SESSION['email']))
+    {
+        header('Location: /charvi/index.php');
+    }
     if(!isset($_GET['mailerror']) && !isset($_GET['otpsuccess']))
     {
         $mail = new PHPMailer;
@@ -27,7 +32,7 @@
         $mail->Body    = "<h4>Your OTP For Verification is : <b>{$_SESSION['randomOTP']}</b></h4>";
 
         if(!$mail->send()) {
-            $error='Message could not be sent. Server Unreachable !';
+            $error='OTP could not be sent. Server Unreachable !';
             header("Location: /charvi/register.php?error={$error} & otperror=1 & mailerror=1");
         }
         else

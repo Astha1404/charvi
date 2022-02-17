@@ -10,83 +10,122 @@
 <body>
     <?php
         require_once 'dbconnection.php';
-        if(isset($_POST['submit']) && !isset($_SESSION['email']))
+        session_start();
+        if(isset($_SESSION['email']))
         {
-            session_start();
-            $sql = "SELECT * FROM user WHERE email = '".$_POST['userName']."' and password = '".md5($_POST['password'])."'";
-            $result = mysqli_query($con,$sql);
-            if(mysqli_num_rows($result)!=1)
+            header('Location: /charvi/index.php');
+        }
+        else
+        {
+            require_once 'navbar.php';
+            if(isset($_POST['loginsubmit']))
             {
-                $error = "User Name Or Password You Entered is Wrong !!";
-            }
-            else
-            {
-                $row = mysqli_fetch_assoc($result);
-                $_SESSION['userName'] = $row['USER_NAME'];
-                $_SESSION['email'] = $row['EMAIL'];
-                $sql = "SELECT * FROM role WHERE role_id = '".$row['ROLE']."'";
+                $sql = "SELECT * FROM user WHERE email = '".$_POST['userName']."' and password = '".md5($_POST['password'])."'";
                 $result = mysqli_query($con,$sql);
-                $row = mysqli_fetch_assoc($result);
-                $_SESSION['role']=$row['ROLE_NAME'];
-                header('Location: /charvi/index.php');
+                if(mysqli_num_rows($result)!=1)
+                {
+                    $error = "User Name Or Password You Entered is Wrong !!";
+                    header("Location: /charvi/login.php?error={$error}");
+                }
+                else
+                {
+                    $row = mysqli_fetch_assoc($result);
+                    $_SESSION['userName'] = $row['USER_NAME'];
+                    $_SESSION['email'] = $row['EMAIL'];
+                    $sql = "SELECT * FROM role WHERE role_id = '".$row['ROLE']."'";
+                    $result = mysqli_query($con,$sql);
+                    $row = mysqli_fetch_assoc($result);
+                    $_SESSION['role']=$row['ROLE_NAME'];
+                    header('Location: /charvi/index.php');
+                }
             }
-        }
-        require_once 'navbar.php';
-        if(!isset($_POST['getotp']))
-        {
-            require_once 'login-form.php';
-        }
-        if(isset($_POST['getotp']))
-        {
-            $email = $_POST['userName'];
-            $sql = "SELECT * FROM user WHERE email = '{$email}'";
-            $result = mysqli_query($con,$sql);
-            if(mysqli_num_rows($result)!=0)
+            else if(isset($_GET['forget']))
             {
-                require_once 'otp-form.php';
+                require_once 'forgetpassword.php';
+            }
+            else if(isset($_POST['getotp']))
+            {
+                $_SESSION['Remail'] = $_POST['userName'];
+                $sql = "SELECT * FROM user WHERE email = '{$_SESSION['Remail']}'";
+                $result = mysqli_query($con,$sql);
+                if(mysqli_num_rows($result)!=0)
+                {
+                    if(!isset($_SESSION['Rname']))
+                    {
+                        $row = mysqli_fetch_assoc($result);
+                        $_SESSION['Rname']=$row['USER_NAME'];
+                    }
+                    $_SESSION['randomOTP'] = random_int(100000,999999);
+                    require_once 'otp-reset.php';
+                }
+                else
+                {
+                    $error = "User(Email) doesn't exist";
+                    header("Location: /charvi/login.php?forget=1 & error= {$error}");
+                }
+            }
+            else if(isset($_GET['otpsuccess']) && isset($_SESSION['randomOTP']))
+            {
+                require_once 'otp-reset.php';
+            }
+            else if(isset($_POST['otpsubmit']))
+            {
+
+                if(($_POST['otp']==$_SESSION['randomOTP']))
+                {
+                    unset($_SESSION['randomOTP']);
+                    unset($_SESSION['Rname']);
+                    require_once 'reset-password.php';
+                }
+                else
+                {
+                    $error = "OTP You Entered is Not Valid";
+                    header("Location: /charvi/login.php?otpsuccess=1 & error= {$error}");
+                }
+            }
+            else if(isset($_POST['updatepwd']))
+            {
+                if($_POST['password'] == $_POST['confpassword'])
+                {
+                    $pwd = md5($_POST['password']);
+                    $sql = "UPDATE user SET password = '{$pwd}' WHERE email = '{$_SESSION['Remail']}'";
+                    $result = mysqli_query($con,$sql);
+                    if($result)
+                    {
+                        unset($_SESSION['Remail']);
+                        $success = "Password Reset Successfully";
+                        header("Location: /charvi/login.php?success={$success}");
+                    }
+                    else
+                    {
+                        $error = "Can't Reset Password Right Now, Please Try Again Later";
+                        header("Location: /charvi/login.php?error={$error}");
+                    }
+                }
+                else
+                {
+                    $error="Password Doesn't Match";
+                    $_GET['error']=$error;
+                    require_once 'reset-password.php';
+                }
             }
             else
             {
-                $error = "User(Email) doesn't exist";
-                header("Location: /charvi/login.php?reset=1 & error= {$error}");
+                require_once 'login-form.php';
             }
         }
-        if(isset($error))
+        if(isset($_GET['error']))
         {
+            $error = $_GET['error'];
             require_once 'error.php';
+        }
+        if(isset($_GET['success']))
+        {
+            $error = $_GET['success'];
+            require_once 'success.php';
         }
         require_once 'footer.php';
     ?>
 </body>
 <?php require_once 'scripts.php' ?>
 </html>
-
-
-<!-- <section> -->
-    <!-- <div class="modal fade" id="login">
-        <div class="modal-dialog modal-dialog-centered" style="z-index:1;">
-        <div class="modal-content">
-            <div class="modal-header">
-            <h4 class="modal-title" id="staticBackdropLabel">LOGIN</h4>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-            <form action="#" class="needs-validation">
-                <div class="mb-4 form-floating">
-                    <input type="email" class="form-control" id="userName" name="userName" placeholder="User Name" required>
-                    <label for="userName">User Name</label>
-                </div>
-                <div class="mb-4 form-floating">
-                    <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
-                    <label for="password">Password</label>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-success">Login</button>
-                <button type="button" class="btn btn-primary">Forget Password ?</button>
-            </div>
-            </form>
-        </div>
-        </div>
-    </div>
-</section> -->
