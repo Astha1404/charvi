@@ -86,6 +86,7 @@
             $success=$_GET['success'];
             require_once 'success.php';
         }
+        require_once 'userDashboard.php';
         require_once 'footer.php';
     ?>
 </body>
