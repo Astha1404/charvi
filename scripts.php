@@ -3,4 +3,5 @@
 <script src="Assets/Javascripts/owl.carousel.js"></script>
 <script src="Assets/Javascripts/carousel.js"></script>
 <script src="Assets/Javascripts/menu-list.js"></script>
+<script src="Assets/Javascripts/addresses.js"></script>
 <script src="Assets/Javascripts/menu-list-kachriyu.js"></script>

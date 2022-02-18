@@ -40,6 +40,7 @@
                     $row = mysqli_fetch_assoc($result);
                     $_SESSION['userName'] = $row['USER_NAME'];
                     $_SESSION['email'] = $row['EMAIL'];
+                    $_SESSION['userId'] = $row['USER_ID'];
                     $sql = "SELECT * FROM role WHERE role_id = '".$row['ROLE']."'";
                     $result = mysqli_query($con,$sql);
                     $row = mysqli_fetch_assoc($result);
