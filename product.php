@@ -16,7 +16,7 @@
     </div>
     <?php
         require_once 'other-menulist.php';
-        require_once 'userProfileMenu.php';
+        require_once 'userDashboard.php';
         require_once 'footer.php';
     ?>
 </body>

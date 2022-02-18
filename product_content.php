@@ -34,8 +34,7 @@
         echo "<div class='col-md-6 col-sm-12 col-12 mx-auto bg-primary overflow-hidden m-0 p-0'>
                 <img src='{$product_images}{$img}' class='img-fluid w-100'>
                 <div class='row'>
-                    <a href= '{$id}' class='btn btn-success col-6 p-3 fs-5'>Buy Now <i class='fas fa-shopping-cart'></i></a>
-                    <a href='{$id}' class='btn btn-primary col-6 p-3 fs-5'>Add To Cart <i class='bi bi-basket'></i></a>
+                    <a href='{$id}' class='btn btn-primary col-12 p-3 fs-5'>Add To Cart <i class='bi bi-basket'></i></a>
                 </div>
             </div>
             <div class='col-md-6 col-sm-12 col-12 mx-auto overflow-hidden m-0 p-0 row my-sm-2 my-md-0'>
@@ -45,6 +44,7 @@
                     <h3 class='text-dark m-4'>Quantity : {$qty} gm</h3>
                     <h4 class='text-dark m-4'>Category : {$category}</h4>
                     <h4 class='text-dark m-4'>Brand : {$company}</h4>
+                    <h4 class='d-inline text-dark m-4'>Quantity : </h4><input type='number'  value='1' name='qty' value='<?php echo $orderQty; ?>' class='form-control w-25 d-inline'/>
                 </div>
                 <div class='container-fluid mx-auto m-0 p-0 col-6 col-md-12'>
                     <h2 class='text-center bg-secondary text-light py-4 p-0'>Description</h2>

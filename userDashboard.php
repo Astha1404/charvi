@@ -8,7 +8,7 @@
             <a class='list-group-item list-group-active text-center' href="userProfile.php">Profile</a>
             <a class='list-group-item list-group-active text-center' href="#">Orders</a>
             <a class='list-group-item list-group-active text-center' href="addresses.php">Addresses</a>
-            <a class='list-group-item list-group-active text-center' href="#">Cart</a>
+            <a class='list-group-item list-group-active text-center' href="cart.php">Cart</a>
             <a class='list-group-item list-group-active text-center' href="logout.php">Logout</a>
         </div>
     </div>
