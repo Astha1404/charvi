@@ -79,7 +79,7 @@
                 while(($row = mysqli_fetch_assoc($result)))
                 {   
                     echo "<div class='card my-2'>
-                            <form action='{$_SESSION['PHP_SELF']}' method='POST'>
+                            <form action='{$_SERVER['PHP_SELF']}' method='POST'>
                                 <div class='card-header'><h4 class='text-center'>Address {$i}</h4></div>
                                 <div class='card-body'>
                                     <div class='row justify-content-center align-items-center my-2'>
@@ -121,7 +121,7 @@
                 if(isset($_GET['new']))
                 {
                     echo "<div class='card' id='{$id}'>
-                            <form action='{$_SESSION['PHP_SELF']}' method='POST'>
+                            <form action='{$_SERVER['PHP_SELF']}' method='POST'>
                                 <input type='number' name='temp' style='display:none;' value=''>
                                 <div class='card-header'><h4 class='text-center'>Address {$i}</h4></div>
                                 <div class='card-body'>
