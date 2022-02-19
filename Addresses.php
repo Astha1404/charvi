@@ -27,7 +27,7 @@
             $landmark = $_POST['landmark'];
             $pincode = $_POST['pincode'];
             $userId = $_SESSION['userId'];
-            $id = $_POST['temp'];
+            $id = $_POST['saveAddress'];
             $sql = "SELECT * FROM address WHERE address_id = '{$id}'";
             $result = mysqli_query($con,$sql);
             unset($_POST);
@@ -53,7 +53,7 @@
         }
         if(isset($_POST['removeAddress']))
         {
-            $id = $_POST['temp'];
+            $id = $_POST['removeAddress'];
             $sql = "DELETE FROM `address` WHERE ADDRESS_ID = '$id'";
             $result = mysqli_query($con,$sql);
             unset($_POST);
@@ -80,7 +80,6 @@
                 {   
                     echo "<div class='card my-2'>
                             <form action='{$_SESSION['PHP_SELF']}' method='POST'>
-                                <input type='number' name='temp' style='display:none;' value='{$row['ADDRESS_ID']}'>
                                 <div class='card-header'><h4 class='text-center'>Address {$i}</h4></div>
                                 <div class='card-body'>
                                     <div class='row justify-content-center align-items-center my-2'>
