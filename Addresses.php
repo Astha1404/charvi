@@ -120,7 +120,7 @@
                 }
                 if(isset($_GET['new']))
                 {
-                    echo "<div class='card' id='{$id}'>
+                    echo "<div class='card'>
                             <form action='{$_SERVER['PHP_SELF']}' method='POST'>
                                 <input type='number' name='temp' style='display:none;' value=''>
                                 <div class='card-header'><h4 class='text-center'>Address {$i}</h4></div>
@@ -149,12 +149,12 @@
                                     </div>
                                     <div class='row my-2'>
                                         <div class='col'>
-                                            <h5 class='d-inline text-nowrap'>Landmark : </h5><input type='text' name='landmark' class='form-control' value='{$row['LANDMARK']}'>
+                                            <h5 class='d-inline text-nowrap'>Landmark : </h5><input type='text' name='landmark' class='form-control' value='".(isset($row)?$row['LANDMARK']:'')."'>
                                         </div>
                                     </div>
                                 </div>
                                 <div class='card-footer text-center'>
-                                    <button type='submit' name='saveAddress' id='{$i}' value='{$row['ADDRESS_ID']}' class='btn btn-success'>Save</button>
+                                    <button type='submit' name='saveAddress' id='{$i}' value='".(isset($row)?$row['ADDRESS_ID']:'')."' class='btn btn-success'>Save</button>
                                 </div>
                             </form>
                         </div>";

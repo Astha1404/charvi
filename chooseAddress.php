@@ -84,7 +84,7 @@
                     while(($row = mysqli_fetch_assoc($result)))
                     {   
                         echo "<div class='card my-2'>
-                                <form action='{$_SESSION['PHP_SELF']}' method='POST'>
+                                <form action='{$_SERVER['PHP_SELF']}' method='POST'>
                                     <input type='number' name='temp' style='display:none;' value='{$row['ADDRESS_ID']}'>
                                     <div class='card-header'><h4 class='text-center'>Address {$i}</h4></div>
                                     <div class='card-body'>
@@ -127,44 +127,44 @@
                     }
                     if(isset($_GET['new']))
                     {
-                        echo "<div class='card' id='{$id}'>
-                                <form action='{$_SESSION['PHP_SELF']}' method='POST'>
-                                    <input type='number' name='temp' style='display:none;' value=''>
-                                    <div class='card-header'><h4 class='text-center'>Address {$i}</h4></div>
-                                    <div class='card-body'>
-                                        <div class='row justify-content-center align-items-center my-2'>
-                                            <div class='col'>
-                                                <h5 class='d-inline text-nowrap'>House Number : </h5><input type='text' name='houseNo' id='houseNo' class='form-control'}'>
-                                            </div>
-                                            <div class='col'>
-                                                <h5 class='d-inline text-nowrap'>Building Name : </h5><input type='text' name='buildingName' id='buildingName' class='form-control'>
-                                            </div>
-                                            <div class='col'>
-                                                <h5 class='d-inline text-nowrap'>City : </h5><input type='text' name='city' id='city' class='form-control'>
-                                            </div>
+                    echo "<div class='card'>
+                            <form action='{$_SERVER['PHP_SELF']}' method='POST'>
+                                <input type='number' name='temp' style='display:none;' value=''>
+                                <div class='card-header'><h4 class='text-center'>Address {$i}</h4></div>
+                                <div class='card-body'>
+                                    <div class='row justify-content-center align-items-center my-2'>
+                                        <div class='col'>
+                                            <h5 class='d-inline text-nowrap'>House Number : </h5><input type='text' name='houseNo' id='houseNo' class='form-control'}'>
                                         </div>
-                                        <div class='row justify-content-center align-items-center my-2'>
-                                            <div class='col'>
-                                                <h5 class='d-inline text-nowrap'>Area : </h5><input type='text' name='area' id='area' class='form-control'>
-                                            </div>
-                                            <div class='col'>
-                                                <h5 class='d-inline text-nowrap'>State : </h5><input type='text' name='state' id='state' class='form-control'>
-                                            </div>
-                                            <div class='col'>
-                                                <h5 class='d-inline text-nowrap'>Pincode : </h5><input type='number' min='100000' max='999999' class='form-control' id='pincode' name='pincode' oninvalid='this.setCustomValidity(`Please Enter Valid Mobile Number`)' oninput='this.setCustomValidity(``)' required>
-                                            </div>
+                                        <div class='col'>
+                                            <h5 class='d-inline text-nowrap'>Building Name : </h5><input type='text' name='buildingName' id='buildingName' class='form-control'>
                                         </div>
-                                        <div class='row my-2'>
-                                            <div class='col'>
-                                                <h5 class='d-inline text-nowrap'>Landmark : </h5><input type='text' name='landmark' class='form-control' value='{$row['LANDMARK']}'>
-                                            </div>
+                                        <div class='col'>
+                                            <h5 class='d-inline text-nowrap'>City : </h5><input type='text' name='city' id='city' class='form-control'>
                                         </div>
                                     </div>
-                                    <div class='card-footer text-center'>
-                                        <button type='submit' name='saveAddress' id='{$i}' value='{$row['ADDRESS_ID']}' class='btn btn-success'>Save</button>
+                                    <div class='row justify-content-center align-items-center my-2'>
+                                        <div class='col'>
+                                            <h5 class='d-inline text-nowrap'>Area : </h5><input type='text' name='area' id='area' class='form-control'>
+                                        </div>
+                                        <div class='col'>
+                                            <h5 class='d-inline text-nowrap'>State : </h5><input type='text' name='state' id='state' class='form-control'>
+                                        </div>
+                                        <div class='col'>
+                                            <h5 class='d-inline text-nowrap'>Pincode : </h5><input type='number' min='100000' max='999999' class='form-control' id='pincode' name='pincode' oninvalid='this.setCustomValidity(`Please Enter Valid Mobile Number`)' oninput='this.setCustomValidity(``)' required>
+                                        </div>
                                     </div>
-                                </form>
-                            </div>";
+                                    <div class='row my-2'>
+                                        <div class='col'>
+                                            <h5 class='d-inline text-nowrap'>Landmark : </h5><input type='text' name='landmark' class='form-control' value='".(isset($row)?$row['LANDMARK']:'')."'>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class='card-footer text-center'>
+                                    <button type='submit' name='saveAddress' id='{$i}' value='".(isset($row)?$row['ADDRESS_ID']:'')."' class='btn btn-success'>Save</button>
+                                </div>
+                            </form>
+                        </div>";
                     }
                 ?>
                 <div class="container d-flex justify-content-end my-4">

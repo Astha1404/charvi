@@ -29,6 +29,17 @@
         if(isset($_POST['orderNow']))
         {
             // die(print_r($_SESSION['orderNow']));
+            $sql = "SELECT * FROM cart WHERE user_id={$_SESSION['userId']}";
+            $result = mysqli_query($con,$sql);
+            if(mysqli_num_rows($result)>0)
+            {
+                while(($row = mysqli_fetch_assoc($result))!=null)
+                {
+                    $id = 'qty'.$row['product_id'];
+                    $sql = "UPDATE cart SET quantity = {$_POST[$id]} WHERE user_id = {$_SESSION['userId']} AND product_id = {$row['product_id']}";
+                    $result1 = mysqli_query($con,$sql);
+                }
+            }
             header('Location: /charvi/chooseAddress.php');
         }
         else
@@ -83,7 +94,7 @@
                                             <button class="btn btn-lg btn-close p-0" type="submit" name="removeCart" value="<?php echo $productId; ?>"></button>
                                         </div>
                                         <h5>Product Quantity :<?php echo $qty; ?>  gm, Company : <?php echo $company; ?>, Category : <?php echo $category; ?></h5>
-                                        <h5 class="d-inline">Quantity : </h5><input type="number" name="qty" value="<?php echo $orderQty; ?>" class="form-control w-25 d-inline"/>
+                                        <h5 class="d-inline">Quantity : </h5><input type="number" name="qty<?php echo $productId?>" value="<?php echo $orderQty; ?>" class="form-control w-25 d-inline"/>
                                     </div>
                                 </div>
                             </div>
