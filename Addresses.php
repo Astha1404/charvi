@@ -43,12 +43,12 @@
             if($result)
             {
                 $success="Your Address is Saved Successfully";
-                $_GET['success']=$success;
+                header("Location: /charvi/Addresses.php?success={$success}");
             }
             else
             {
                 $error="Can't Save Your Address Right Now Please Try Again Later";
-                $_GET['error']=$error;
+                header("Location: /charvi/Addresses.php?error={$error}");
             }
         }
         if(isset($_POST['removeAddress']))
@@ -60,12 +60,12 @@
             if($result)
             {
                 $success="Your Address is Saved Successfully";
-                $_GET['success']=$success;
+                header("Location: /charvi/Addresses.php?success={$success}");
             }
             else
             {
                 $error="Can't Save Your Address Right Now Please Try Again Later";
-                $_GET['error']=$error;
+                header("Location: /charvi/Addresses.php?error={$error}");
             }
         }
     ?>
@@ -112,7 +112,7 @@
                                 </div>
                                 <div class='card-footer text-center'>
                                     <button type='submit' name='saveAddress' id='{$i}' value='{$row['ADDRESS_ID']}' class='btn btn-success'>Save</button>
-                                    <button type='' name='removeAddress' id='{$i}' value='{$row['ADDRESS_ID']}' class='btn btn-danger removeAddress'>Remove</button>
+                                    <button type='submit' name='removeAddress' id='{$i}' value='{$row['ADDRESS_ID']}' class='btn btn-danger removeAddress'>Remove</button>
                                 </div>
                             </form>
                         </div>";
