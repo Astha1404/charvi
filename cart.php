@@ -34,6 +34,8 @@
         {
     ?>
             <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+            <div class="container-fluid p-0">
+                <h1 class="text-center bg-secondary py-4 text-light">Your Cart</h1>
     <?php
             while(($row=mysqli_fetch_assoc($result))!=null)
             {
@@ -59,9 +61,7 @@
                     $company = $row1['company_name'];
                     $orderQty = $row['quantity'];
     ?>
-                    <div class="container-fluid p-0">
-                        <h1 class="text-center bg-secondary py-4 text-light">Your Cart</h1>
-                        <div class="container">
+                    <div class="container">
                             <div class="d-flex bg-light rounded-3 p-4 my-2" id="#temp">
                                 <!-- Image -->
                                 <img
@@ -81,12 +81,12 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                </div>
     <?php
                 }
             }
     ?>
-            <div class="container text-center">
+            <div class="container text-center my-4">
                 <button class="btn btn-success" type="submit" name="orderNow">Order Now</button>
             </div>
             </form>
