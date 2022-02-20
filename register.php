@@ -24,7 +24,7 @@
             $email = $_POST['email'];
             $sql = "SELECT * FROM `user` WHERE email='{$email}'";
             $result = mysqli_query($con,$sql);
-            if(mysqli_num_rows($result)!=0)
+            if(mysqli_num_rows($result)==1)
             {
                 $error = "Email Address Already Taken!!";
                 header("Location: /charvi/register.php?error={$error}");
@@ -35,13 +35,10 @@
             $_SESSION['Rpwd'] = md5(mysqli_real_escape_string($con,$_POST['password']));
             $_SESSION['randomOTP'] = random_int(100000,999999);
         }
-        else
+        else if(isset($_POST['registration']) && ($_POST['password']!=$_POST['confirmPassword']))
         {
-            if(isset($_POST['registration']))
-            {
-                $error = "Password Didn't Match";
-                header("Location: /charvi/register.php?error={$error}");
-            }
+            $error = "Password Didn't Match";
+            header("Location: /charvi/register.php?error={$error}");
         }
         if(isset($_POST['otpsubmit']))
         {
@@ -76,7 +73,6 @@
                 if($result)
                 {
                     unset($_SESSION['randomOTP']);
-                    unset($POST);
                     header("Location: /charvi/index.php?success={$success}");
                 }
             }
