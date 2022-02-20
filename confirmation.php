@@ -20,8 +20,49 @@
         require_once 'navbar.php';
         if(isset($_POST['confirm']))
         {
-            $success = "Your Order is Successfully Placed";
-            header("Location: /charvi/confirmation.php?success={$success}");
+            $sql = "SELECT * FROM cart WHERE user_id = {$_SESSION['userId']}";
+            $result = mysqli_query($con,$sql);
+            $sum = 0;
+            if($result)
+            {
+                while(($row=mysqli_fetch_assoc($result)))
+                {
+                    $sql = "SELECT * FROM product WHERE product_id={$row['product_id']}";
+                    $result1 = mysqli_query($con,$sql);
+                    if(mysqli_num_rows($result1)>0)
+                    {
+                        $row1 =  mysqli_fetch_assoc($result1);
+                        $name = $row1['PRODUCT_NAME'];
+                        $productId = $row['product_id'];
+                        $qty = $row1['QUANTITY'];
+                        $price = $row1['PRICE'];
+                        $img = $row1['IMAGE'];
+                        $category = $row1['CATEGORY_ID'];
+                        $company = $row1['COMPANY_ID'];
+                        $sql1 = "SELECT category_name FROM category WHERE category_id = {$category}";
+                        $result1 = mysqli_query($con,$sql1);
+                        $row1 = mysqli_fetch_assoc($result1);
+                        $category = $row1['category_name'];
+                        $sql1 = "SELECT company_name FROM company WHERE company_id = {$company}";
+                        $result1 = mysqli_query($con,$sql1);
+                        $row1 = mysqli_fetch_assoc($result1);
+                        $company = $row1['company_name'];
+                        $orderQty = $row['quantity'];
+                        $sql = "INSERT INTO `orders`(`ORDER_ID`, `PRODUCT_ID`, `QTY`, `USER_ID`, `STATUS`) VALUES (NULL,'{$productId}','{$orderQty}','{$_SESSION['userId']}','1')";
+                        $temp = mysqli_query($con,$sql);
+                        if($temp)
+                        {
+                            $sql = "DELETE FROM cart WHERE product_id = '{$productId}' AND user_id = {$_SESSION['userId']}";
+                            $temp = mysqli_query($con,$sql);
+                            if($temp)
+                            {
+                                $success = "Your Order is Successfully Placed";
+                                header("Location: /charvi/orders.php?success={$success}");
+                            }
+                        }
+                    }
+                }
+            }
         }
         if(isset($_POST['checkOut']))
         {
