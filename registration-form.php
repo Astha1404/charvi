@@ -31,8 +31,8 @@
                     <label for="password">Enter Your Password</label>
             </div>
             <div class="mb-4 form-floating col-md-8 col-sm-12 col-11">
-                <input type="password" class="form-control" id="password" name="confirmPassword" placeholder="Confirm Your Password" required>
-                <label for="password">Confirm Your Password</label>
+                <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirm Your Password" required>
+                <label for="confirmPassword">Confirm Your Password</label>
             </div>
             
             <div class="col-md-12 col-sm-12 col-12 mb-4 d-flex justify-content-center gap-4">

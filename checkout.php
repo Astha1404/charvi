@@ -9,7 +9,16 @@
 </head>
 <body>
     
-    <?php require_once 'navbar.php'; ?>
+    <?php require_once 'navbar.php'; 
+        if(!isset($_SESSION))
+        {   
+            session_start();
+        }
+        if(!isset($_SESSION['email']))
+        {
+            header('Location: /charvi/index.php');
+        }
+    ?>
         <div class="container-fluid p-0">
             <h1 class="text-center p-4 text-light bg-dark">Check Out</h1>
         </div>

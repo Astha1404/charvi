@@ -8,7 +8,11 @@
     {
         header('Location: /charvi/index.php');
     }
-    if(!isset($_GET['mailerror']) && !isset($_GET['otpsuccess']))
+    if(!isset($_SESSION['randomOTP']))
+    {
+        header("Location: /charvi/index.php");
+    }
+    if(isset($_SESSION['randomOTP']) && !isset($_GET['otperror']) && !isset($_GET['otpsuccess']))
     {
         $mail = new PHPMailer;
 
@@ -36,7 +40,7 @@
 
         if(!$mail->send()) {
             $error='OTP could not be sent. Server Unreachable !';
-            header("Location: /charvi/register.php?error={$error} & otperror=1 & mailerror=1");
+            header("Location: /charvi/register.php?error={$error} & otperror=1");
         }
         else
         {

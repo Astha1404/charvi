@@ -18,11 +18,6 @@
         {
             header('Location: /charvi/index.php');
         }
-        if(isset($_SESSION['email']))
-        {
-            die("HK");
-            header('Location: /charvi/index.php');
-        }
         else
         {
             require_once 'navbar.php';
