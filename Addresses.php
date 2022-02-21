@@ -161,7 +161,7 @@
                 }
             ?>
             <div class="container d-flex justify-content-end my-4">
-                <a class="btn rounded-circle btn-primary fs-4" href="<?php echo "{$_SERVER['PHP_SELF']}?new={$i}"; ?>">+</a>
+                <a class="btn rounded-circle btn-primary fs-4 px-3" href="<?php echo "{$_SERVER['PHP_SELF']}?new={$i}"; ?>">+</a>
             </div>
         </div>
     </div>
