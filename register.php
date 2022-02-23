@@ -56,23 +56,23 @@
             if($_SESSION['randomOTP']==$_POST['otp'])
             {
                 $name = $_SESSION['Rname'];
-                unset($_SESSION['Rname']);
                 $email = $_SESSION['Remail'];
-                unset($_SESSION['Remail']);
                 $number = $_SESSION['Rnumber'];
-                unset($_SESSION['Rnumber']);
                 $pwd = $_SESSION['Rpwd'];
-                unset($_SESSION['Rpwd']);
                 $sql = "SELECT * FROM role WHERE ROLE_NAME = 'CUSTOMER'";
                 $result = mysqli_query($con, $sql);
                 if($result)
                 {
                     $row = mysqli_fetch_assoc($result);
                     $role = $row['ROLE_ID'];
-                    $sql = "INSERT INTO `user`(`USER_ID`, `USER_NAME`, `EMAIL`, `PASSWORD`, `CONTACT`, `ROLE`) VALUES (null,'{$name}','{$email}','$pwd','{$number}','{$role}')";
+                    $sql = "INSERT INTO `user`(`USER_ID`, `USER_NAME`, `EMAIL`, `PASSWORD`, `CONTACT`, `ROLE`) VALUES (null,'{$name}','{$email}','$pwd',{$number},'{$role}')";
                     $result = mysqli_query($con,$sql);
                     if($result)
                     {
+                        unset($_SESSION['Rname']);
+                        unset($_SESSION['Remail']);
+                        unset($_SESSION['Rnumber']);
+                        unset($_SESSION['Rpwd']);
                         unset($_SESSION['randomOTP']);
                         $success="Registration Successful";
                         header("Location: /charvi/index.php?success={$success}");

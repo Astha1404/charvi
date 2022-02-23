@@ -8,7 +8,8 @@
     <?php require_once 'header.php'; ?>
 </head>
 <body>
-    <?php require_once 'navbar.php';
+    <?php 
+    
         if(!isset($_SESSION))
         {
             session_start();
@@ -17,6 +18,7 @@
         {
             header('Location: /charvi/index.php');
         }
+        require_once 'dbconnection.php';
         if(isset($_POST['saveAddress']))
         {
             $hno = $_POST['houseNo'];
@@ -72,6 +74,8 @@
         {
             header('Location: /charvi/checkout.php');
         }
+        
+        require 'navbar.php';
     ?>
     <div class="container-fluid p-0">
         <h1 class="text-center bg-secondary py-4 text-light">Choose Delivery Address</h1>

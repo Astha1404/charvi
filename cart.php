@@ -8,7 +8,7 @@
     <?php require_once 'header.php'; ?>
 </head>
 <body>
-    <?php require_once 'navbar.php';
+    <?php
         if(!isset($_SESSION))
         {   
             session_start();
@@ -17,7 +17,7 @@
         {
             header('Location: /charvi/index.php');
         }
-        
+        require_once 'dbconnection.php';
         if(isset($_POST['removeCart']))
         {
             $userId = $_SESSION['userId'];
@@ -44,6 +44,7 @@
         }
         else
         {
+            require_once 'navbar.php';
             $userId = $_SESSION['userId'];
             $sql = "SELECT * FROM cart WHERE user_id = '{$userId}'";
             $result = mysqli_query($con,$sql);

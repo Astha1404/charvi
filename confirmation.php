@@ -17,7 +17,7 @@
         {
             header('Location: /charvi/login.php');
         }
-        require_once 'navbar.php';
+        require_once 'dbconnection.php';
         if(isset($_POST['confirm']))
         {
             $sql = "SELECT * FROM cart WHERE user_id = {$_SESSION['userId']}";
@@ -64,6 +64,7 @@
                 }
             }
         }
+        require_once 'navbar.php';
         if(isset($_POST['checkOut']))
         {
     ?>

@@ -5,16 +5,12 @@
     {   
         session_start();
     }
-    if(!isset($_SESSION['email']))
-    {
-        header('Location: /charvi/login.php');
-    }
     if(!isset($_GET['id']))
     {
         echo "<h1 class='text-center text-dark my-5 py-5'>404 - Page NOT Found</h1>";
         die();
     }
-    if(isset($_GET['like']))
+    if(isset($_GET['like']) && isset($_SESSION['email']))
     {
             $sql = "SELECT * FROM wishlist WHERE user_id={$_SESSION['userId']} AND product_id={$_GET['id']}";
             $result = mysqli_query($con,$sql);
@@ -31,9 +27,9 @@
                 header("Location: /charvi/product.php?id={$_GET['id']}");
             }
     }
-    else
+    if(isset($_GET['like']) && !isset($_SESSION['email']))
     {
-        
+        header("Location: /charvi/login.php");
     }
     $sql = "SELECT * FROM product WHERE product_id = {$_GET['id']}";
     $result = mysqli_query($con,$sql);
@@ -61,9 +57,16 @@
         $result = mysqli_query($con,$sql);
         $row = mysqli_fetch_assoc($result);
         $company = $row['company_name'];
-        $sql = "SELECT * FROM wishlist WHERE user_id = {$_SESSION['userId']} AND product_id={$id}";
-        $result = mysqli_query($con,$sql);
-        $like = mysqli_num_rows($result)==1?true:false;
+        if(isset($_SESSION['email']))
+        {
+            $sql = "SELECT * FROM wishlist WHERE user_id = {$_SESSION['userId']} AND product_id={$id}";
+            $result = mysqli_query($con,$sql);
+            $like = mysqli_num_rows($result)==1?true:false;
+        }
+        else
+        {
+            $like = false;
+        }
 
         echo "<div class='col-md-6 col-sm-12 col-12 mx-auto bg-primary overflow-hidden m-0 p-0'>
                 <div class='position-relative'>

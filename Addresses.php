@@ -43,12 +43,12 @@
             if($result)
             {
                 $success="Your Address is Saved Successfully";
-                header("Location: /charvi/Addresses.php?success={$success}");
+                echo "<script>window.location.href='Addresses.php?success={$success}'</script>";
             }
             else
             {
                 $error="Can't Save Your Address Right Now Please Try Again Later";
-                header("Location: /charvi/Addresses.php?error={$error}");
+                echo "<script>window.location.href='Addresses.php?error={$error}'</script>";
             }
         }
         if(isset($_POST['removeAddress']))
@@ -60,12 +60,12 @@
             if($result)
             {
                 $success="Your Address is Saved Successfully";
-                header("Location: /charvi/Addresses.php?success={$success}");
+                echo "<script>window.location.href='Addresses.php?success={$success}'</script>";
             }
             else
             {
                 $error="Can't Save Your Address Right Now Please Try Again Later";
-                header("Location: /charvi/Addresses.php?error={$error}");
+                echo "<script>window.location.href='Addresses.php?error={$error}'</script>";
             }
         }
     ?>
@@ -84,29 +84,29 @@
                                 <div class='card-body'>
                                     <div class='row justify-content-center align-items-center my-2'>
                                         <div class='col'>
-                                            <h5 class='d-inline text-nowrap'>House Number : </h5><input type='text' name='houseNo' id='houseNo' class='form-control' value='{$row['HOUSE_NO']}'>
+                                            <h5 class='d-inline text-nowrap'>House Number : </h5><input type='text' name='houseNo' id='houseNo' class='form-control' value='{$row['HOUSE_NO']}' required>
                                         </div>
                                         <div class='col'>
-                                            <h5 class='d-inline text-nowrap'>Building Name : </h5><input type='text' name='buildingName' id='buildingName' class='form-control' value='{$row['BUILDING_NAME']}'>
+                                            <h5 class='d-inline text-nowrap'>Building Name : </h5><input type='text' name='buildingName' id='buildingName' class='form-control' value='{$row['BUILDING_NAME']}' required>
                                         </div>
                                         <div class='col'>
-                                            <h5 class='d-inline text-nowrap'>City : </h5><input type='text' name='city' id='city' class='form-control' value='{$row['CITY']}'>
+                                            <h5 class='d-inline text-nowrap'>City : </h5><input type='text' name='city' id='city' class='form-control' value='{$row['CITY']}' required>
                                         </div>
                                     </div>
                                     <div class='row justify-content-center align-items-center my-2'>
                                         <div class='col'>
-                                            <h5 class='d-inline text-nowrap'>Area : </h5><input type='text' name='area' id='area' class='form-control' value='{$row['AREA']}'>
+                                            <h5 class='d-inline text-nowrap'>Area : </h5><input type='text' name='area' id='area' class='form-control' value='{$row['AREA']}' required>
                                         </div>
                                         <div class='col'>
-                                            <h5 class='d-inline text-nowrap'>State : </h5><input type='text' name='state' id='state' class='form-control' value='{$row['STATE']}'>
+                                            <h5 class='d-inline text-nowrap'>State : </h5><input type='text' name='state' id='state' class='form-control' value='{$row['STATE']}' required>
                                         </div>
                                         <div class='col'>
-                                            <h5 class='d-inline text-nowrap'>Pincode : </h5><input type='number' min='100000' max='999999' class='form-control' id='pincode' name='pincode' oninvalid='this.setCustomValidity(`Please Enter Valid Mobile Number`)' oninput='this.setCustomValidity(``)' value='{$row['PINCODE']}' required>
+                                            <h5 class='d-inline text-nowrap'>Pincode : </h5><input type='number' min='100000' max='999999' class='form-control' id='pincode' name='pincode' oninvalid='this.setCustomValidity(`Please Enter Valid Pincode`)' oninput='this.setCustomValidity(``)' value='{$row['PINCODE']}' required>
                                         </div>
                                     </div>
                                     <div class='row my-2'>
                                         <div class='col'>
-                                            <h5 class='d-inline text-nowrap'>Landmark : </h5><input type='text' name='landmark' class='form-control' value='{$row['LANDMARK']}'>
+                                            <h5 class='d-inline text-nowrap'>Landmark : </h5><input type='text' name='landmark' class='form-control' value='{$row['LANDMARK']}' required>
                                         </div>
                                     </div>
                                 </div>
@@ -127,29 +127,29 @@
                                 <div class='card-body'>
                                     <div class='row justify-content-center align-items-center my-2'>
                                         <div class='col'>
-                                            <h5 class='d-inline text-nowrap'>House Number : </h5><input type='text' name='houseNo' id='houseNo' class='form-control'}'>
+                                            <h5 class='d-inline text-nowrap'>House Number : </h5><input type='text' name='houseNo' id='houseNo' class='form-control'}' required>
                                         </div>
                                         <div class='col'>
-                                            <h5 class='d-inline text-nowrap'>Building Name : </h5><input type='text' name='buildingName' id='buildingName' class='form-control'>
+                                            <h5 class='d-inline text-nowrap'>Building Name : </h5><input type='text' name='buildingName' id='buildingName' class='form-control' required>
                                         </div>
                                         <div class='col'>
-                                            <h5 class='d-inline text-nowrap'>City : </h5><input type='text' name='city' id='city' class='form-control'>
+                                            <h5 class='d-inline text-nowrap'>City : </h5><input type='text' name='city' id='city' class='form-control' required>
                                         </div>
                                     </div>
                                     <div class='row justify-content-center align-items-center my-2'>
                                         <div class='col'>
-                                            <h5 class='d-inline text-nowrap'>Area : </h5><input type='text' name='area' id='area' class='form-control'>
+                                            <h5 class='d-inline text-nowrap'>Area : </h5><input type='text' name='area' id='area' class='form-control' required>
                                         </div>
                                         <div class='col'>
-                                            <h5 class='d-inline text-nowrap'>State : </h5><input type='text' name='state' id='state' class='form-control'>
+                                            <h5 class='d-inline text-nowrap'>State : </h5><input type='text' name='state' id='state' class='form-control' required>
                                         </div>
                                         <div class='col'>
-                                            <h5 class='d-inline text-nowrap'>Pincode : </h5><input type='number' min='100000' max='999999' class='form-control' id='pincode' name='pincode' oninvalid='this.setCustomValidity(`Please Enter Valid Mobile Number`)' oninput='this.setCustomValidity(``)' required>
+                                            <h5 class='d-inline text-nowrap'>Pincode : </h5><input type='number' min='100000' max='999999' class='form-control' id='pincode' name='pincode' oninvalid='this.setCustomValidity(`Please Enter Valid Pincode`)' oninput='this.setCustomValidity(``)' required>
                                         </div>
                                     </div>
                                     <div class='row my-2'>
                                         <div class='col'>
-                                            <h5 class='d-inline text-nowrap'>Landmark : </h5><input type='text' name='landmark' class='form-control' value='".(isset($row)?$row['LANDMARK']:'')."'>
+                                            <h5 class='d-inline text-nowrap'>Landmark : </h5><input type='text' name='landmark' class='form-control' value='".(isset($row)?$row['LANDMARK']:'')."' required>
                                         </div>
                                     </div>
                                 </div>

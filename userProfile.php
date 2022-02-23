@@ -29,7 +29,7 @@
             {
                 $_SESSION['userName'] = $_POST['name'];
                 $success="Your Changes Saved Successfully";
-                header("Location: /charvi/userProfile.php?success={$success}");
+                echo "<script>window.location.href='userProfile.php?success={$success}';</script>";
             }
             else
             {

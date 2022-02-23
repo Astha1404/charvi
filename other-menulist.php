@@ -1,4 +1,4 @@
-<div class="container- my-4 mx-0">
+<div class="container-fluid my-4 mx-0">
     <h1 class="display-6 text-secondary text-center mb-4"><span class="border-bottom border-5 mb-4" style="border:rgb(230, 198, 157) ;">Other Items</span></h1>
     <div class="menulist-carousel owl-carousel owl-theme">
         
