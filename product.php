@@ -96,6 +96,7 @@
     {
         header("Location: /charvi/login.php");
     }
+    
     $sql = "SELECT * FROM product WHERE product_id = {$_GET['id']}";
     $result = mysqli_query($con,$sql);
     if(mysqli_num_rows($result)!=1)
@@ -105,6 +106,7 @@
     }
     else
     {
+        
         $row = mysqli_fetch_assoc($result);
         $img = $row['IMAGE'];
         $name = $row['PRODUCT_NAME'];
@@ -160,6 +162,52 @@
                     <div class='d-flex align-items-center'>
                         <h4 class='d-inline text-dark mx-4'>Product Quantity : </h4><input type='number'  value='1' name='qty' class='form-control w-25 d-inline' required/>
                     </div>
+                    <div class='ratings fs-2 m-4'>
+                    <h4 class='text-dark'>Ratings : </h4>";
+                    $sql2 = "SELECT AVG(rating) AS avg FROM feedback WHERE product_id={$_GET['id']}";
+                    $result2 = mysqli_query($con,$sql2);
+                    $row2 = mysqli_fetch_array($result2);
+                    $stars = $row2['avg'];
+                    $i=1;
+                    if($stars>0)
+                    {
+                        $stars = ceil($stars);
+                    }
+                    else
+                    {
+                        $stars = 0;
+                    }
+                    $n = $stars;
+                    $flag=1;
+                    while($i<=5)
+                    {
+                        
+                        if($i<=$n)
+                        {
+                        echo '<i class="bi bi-star-fill text-warning"></i> ';
+                        }
+                        else
+                        {
+                            if($flag==1)
+                            {
+                                $flag=0;
+                                if(($stars*2)%2==1)
+                                {   
+                                    echo '<i class="bi bi-star-half text-warning"></i>';
+                                }
+                                else
+                                {
+                                    echo '<i class="bi bi-star"></i>';
+                                }
+                            }
+                            else
+                            {
+                                echo '<i class="bi bi-star"></i>';
+                            }
+                        }
+                        $i = $i+1;
+                    }
+            echo "</div>
                 </div>
                 <div class='container-fluid mx-auto m-0 p-0 col-6 col-md-12'>
                     <h2 class='text-center bg-secondary text-light py-4 p-0'>Description</h2>
