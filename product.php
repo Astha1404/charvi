@@ -14,6 +14,25 @@
             session_start();
         }
         require_once 'dbconnection.php';
+        if(isset($_POST['submitFeedback']))
+        {
+            if(!isset($_SESSION['email']))
+            {
+                header('location: /charvi/login.php');
+            }
+            else
+            {
+                $feedback = $_POST['feedback'];
+                $rating = $_POST['rating'];
+                $id = $_POST['submitFeedback'];
+                $sql = "INSERT INTO `feedback`(`PRODUCT_ID`, `USER_ID`, `FEEDBACK`, `RATING`) VALUES ({$id},{$_SESSION['userId']},'{$feedback}','{$rating}')";
+                $result = mysqli_query($con,$sql);
+                if($result)
+                {
+                    header("location: /charvi/product.php?id={$id}");
+                }
+            }
+        }
         if(isset($_POST['addToCart']))
         {
             $pid = $_POST['addToCart'];
@@ -50,10 +69,6 @@
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" class="row p-0 m-0">
 
 <?php 
-    if(!isset($_SESSION))
-    {   
-        session_start();
-    }
     if(!isset($_GET['id']))
     {
         echo "<h1 class='text-center text-dark my-5 py-5'>404 - Page NOT Found</h1>";
