@@ -24,7 +24,7 @@
             if($_POST['password']!=$_POST['confirmPassword'])
             {
                 $error = "Password Didn't Match";
-                header("Location: /charvi/register.php?error={$error}");
+                echo "<script>window.location.href='register.php?error={$error}';</script>";
             }
             else
             {
@@ -34,7 +34,8 @@
                 if(mysqli_num_rows($result)!=0)
                 {
                     $error = "Email Address Already Taken!!";
-                    header("Location: /charvi/register.php?error={$error}");
+                    echo "<script>window.location.href='register.php?error={$error}';</script>";
+                    
                 }
                 else
                 {
@@ -83,7 +84,7 @@
             else
             {
                 $error="OTP didn't match";
-                header("Location: /charvi/register.php?error={$error} & otperror=1");
+                echo "<script>window.location.href='register.php?error={$error} & otperror=1';</script>";
                 die();
             }
             require_once 'otp-form.php';
