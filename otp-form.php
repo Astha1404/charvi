@@ -45,7 +45,7 @@
         else
         {
             $success="OTP is being send to {$_SESSION['Remail']}";
-            header("Location: /charvi/register.php?success={$success}&otpsuccess=1");
+            echo "<script>window.location.href='register.php?success={$success}&otpsuccess=1';</script>";
         }
     }
 ?>
