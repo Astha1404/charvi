@@ -75,7 +75,7 @@
                         unset($_SESSION['Rpwd']);
                         unset($_SESSION['randomOTP']);
                         $success="Registration Successful";
-                        header("Location: /charvi/index.php?success={$success}");
+                        echo "<script>window.location.href='index.php?success={$success}';</script>";
                         die();
                     }
                 }
