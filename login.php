@@ -40,7 +40,7 @@
                     $result = mysqli_query($con,$sql);
                     $row = mysqli_fetch_assoc($result);
                     $_SESSION['ROLE']=$row['ROLE_NAME'];
-                    header('Location: /charvi/index.php');
+                    echo "<script>window.location.href='index.php';</script>";
                 }
             }
             else if(isset($_GET['forget']))
