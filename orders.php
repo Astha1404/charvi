@@ -72,7 +72,21 @@
                                 <h5>Product Quantity :<?php echo $qty; ?>  gm, Company : <?php echo $company; ?>, Category : <?php echo $category; ?></h5>
                                 <h5 class="d-inline">Quantity : <?php echo $orderQty; ?></h5>
                                 <h5 class="d-inline mx-4">Price : <?php echo $orderQty." X ".$price." = ".($orderQty*$price); ?></h5>
-                                <h5 class="d-inline mx-4">Order Status : <p class="text-danger d-inline"><?php echo $status; ?></p></h5>
+                                <?php 
+                                    if($status != "ACCEPTED") 
+                                    {
+                                ?>
+                                
+                                    <h5 class="d-inline mx-4">Order Status : <p class="text-danger d-inline"><?php echo $status; ?></p></h5>
+                                <?php
+                                    }
+                                    else
+                                    {
+                                ?>
+                                    <h5 class="d-inline mx-4">Order Status : <p class="text-success d-inline"><?php echo $status; ?></p></h5>
+                                <?php
+                                    }
+                                ?>
                             </div>
                         </div>
                     </div>
