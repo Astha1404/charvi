@@ -28,7 +28,7 @@
                 if(mysqli_num_rows($result)!=1)
                 {
                     $error = "User Name Or Password You Entered is Wrong !!";
-                    header("Location: /charvi/login.php?error={$error}");
+                    echo "<script>window.location.href='login.php?error={$error}';</script>";
                 }
                 else
                 {
