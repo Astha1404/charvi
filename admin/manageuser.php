@@ -1,6 +1,17 @@
 
     <?php
-session_start();
+if(!isset($_SESSION))
+{
+  session_start();
+}
+if(!isset($_SESSION['email']))
+{
+  echo "<script>window.location.href='../index.php'</script>";
+}
+if($_SESSION['ROLE']!="ADMIN")
+{
+  echo "<script>window.location.href='../index.php'</script>";
+}
 include("db.php");
 if(isset($_GET['action']) && $_GET['action']!="" && $_GET['action']=='delete')
 {

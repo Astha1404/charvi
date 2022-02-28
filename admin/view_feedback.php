@@ -1,5 +1,16 @@
 <?php
-session_start();
+if(!isset($_SESSION))
+{
+  session_start();
+}
+if(!isset($_SESSION['email']))
+{
+  echo "<script>window.location.href='../index.php'</script>";
+}
+if($_SESSION['ROLE']!="ADMIN")
+{
+  echo "<script>window.location.href='../index.php'</script>";
+}
 include("db.php");
 error_reporting(0);
 include "sidenav.php";

@@ -1,6 +1,19 @@
 <!doctype html>
 <html lang="en">
-
+<?php 
+  if(!isset($_SESSION))
+  {
+    session_start();
+  }
+  if(!isset($_SESSION['email']))
+  {
+    echo "<script>window.location.href='../index.php'</script>";
+  }
+  if($_SESSION['ROLE']!="ADMIN")
+  {
+    echo "<script>window.location.href='../index.php'</script>";
+  }
+?>
 <head>
   <title>Hello, world!</title>
   <!-- Required meta tags -->
@@ -102,7 +115,7 @@ color:white;
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="index.php">
+            <a class="nav-link" href="../logout.php">
               <i class="material-icons"></i>
               <p>Logout</p>
             </a>

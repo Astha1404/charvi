@@ -1,6 +1,17 @@
 
     <?php
-session_start();
+  if(!isset($_SESSION))
+  {
+    session_start();
+  }
+  if(!isset($_SESSION['email']))
+  {
+    echo "<script>window.location.href='../index.php'</script>";
+  }
+  if($_SESSION['ROLE']!="ADMIN")
+  {
+    echo "<script>window.location.href='../index.php'</script>";
+  }
 include("db.php");
 
 include "sidenav.php";
@@ -26,10 +37,37 @@ include "topheader.php";
                 </div>
 
                 <div class="left-side">
-                  <div class="box_topic">order_list</div>
-                  <div class ="number">40.25</div>
-                  <div class="indicator">
-                    <span class="text">up to today date</span>
+                  <?php
+                    $sql = "SELECT count(*) AS count FROM orders";
+                    $result = mysqli_query($con,$sql);
+                    $row = mysqli_fetch_assoc($result);
+                    $orders = $row['count'];
+                    $sql = "SELECT count(*) AS count FROM user";
+                    $sql = "SELECT * FROM role WHERE role_name='CUSTOMER'";
+                    $result = mysqli_query($con,$sql);
+                    $row = mysqli_fetch_assoc($result);
+                    $customer = $row['ROLE_ID'];
+                    $sql = "SELECT count(*) AS count FROM user WHERE role={$customer}";
+                    $result = mysqli_query($con,$sql);
+                    $row = mysqli_fetch_assoc($result);
+                    $customers = $row['count'];
+                    $sql = "SELECT count(*) AS count FROM product";
+                    $result = mysqli_query($con,$sql);
+                    $row = mysqli_fetch_assoc($result);
+                    $products = $row['count'];
+                    $sql = "SELECT * FROM orderstatus WHERE status='ACCEPTED'";
+                    $result = mysqli_query($con,$sql);
+                    $row = mysqli_fetch_assoc($result);
+                    $accepted = $row['STATUS_ID'];
+                    $sql = "SELECT count(*) AS count FROM orders WHERE status = {$accepted}";
+                    $result = mysqli_query($con,$sql);
+                    $row = mysqli_fetch_assoc($result);
+                    $acceptedOrders = $row['count'];
+                  ?>
+                  <h1 class="text-dark p-4 bg-light">Total Orders : <?php echo $orders;?></h1>
+                  <h1 class="text-dark p-4 bg-light">Total Orders Accepted : <?php echo $acceptedOrders;?></h1>
+                  <h1 class="text-dark p-4 bg-light">Total Customers : <?php echo $customers;?></h1>
+                  <h1 class="text-dark p-4 bg-light">Total Products : <?php echo $products;?></h1>
      </div>
            <!--          <div class="col-md-6">
             <div class="card ">

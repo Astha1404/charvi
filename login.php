@@ -39,7 +39,7 @@
                     $sql = "SELECT * FROM role WHERE role_id = '".$row['ROLE']."'";
                     $result = mysqli_query($con,$sql);
                     $row = mysqli_fetch_assoc($result);
-                    $_SESSION['role']=$row['ROLE_NAME'];
+                    $_SESSION['ROLE']=$row['ROLE_NAME'];
                     header('Location: /charvi/index.php');
                 }
             }

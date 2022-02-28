@@ -1,4 +1,17 @@
-
+<?php 
+  if(!isset($_SESSION))
+  {
+    session_start();
+  }
+  if(!isset($_SESSION['email']))
+  {
+    echo "<script>window.location.href='../index.php'</script>";
+  }
+  if($_SESSION['ROLE']!="ADMIN")
+  {
+    echo "<script>window.location.href='../index.php'</script>";
+  }
+?>
      <div class="main-panel">
       <!-- Navbar -->
       <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">

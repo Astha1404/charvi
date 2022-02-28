@@ -1,30 +1,35 @@
  <?php
-session_start();
+if(!isset($_SESSION))
+{
+  session_start();
+}
+if(!isset($_SESSION['email']))
+{
+  echo "<script>window.location.href='../index.php'</script>";
+}
+if($_SESSION['ROLE']!="ADMIN")
+{
+  echo "<script>window.location.href='../index.php'</script>";
+}
 include("db.php");
-error_reporting(0);
-if(isset($_GET['action']) && $_GET['action']!="" && $_GET['action']=='delete')
-{
-$product_id=$_GET['product_id'];
-///////picture delete/////////
-$result=mysqli_query($con,"select IMAGE from product where PRODUCT_ID='$product_id'")
-or die("query is incorrect...");
-
-list($picture)=mysqli_fetch_array($result);
-$path="../product_images/$picture";
-
-if(file_exists($path)==true)
-{
-  unlink($path);
-}
-else
-{}
-/*this is delet query*/
-mysqli_query($con,"delete from product where PRODUCT_ID='$product_id'")or die("query is incorrect...");
-}
 
 ///pagination
 
-$page=$_GET['page'];
+if(isset($_POST['deleteProduct']))
+{
+  $sql = "DELETE FROM product WHERE product_id = {$_POST['deleteProduct']}";
+  $result = mysqli_query($con,$sql);
+  if($result)
+  {
+    echo "<script>window.location.href='productlist.php?success=Product Deleted Successfully'</script>";
+  }
+  else
+  {
+    echo "<script>window.location.href='productlist.php?error=Product Deletion Failed'</script>";
+  }
+}
+
+$page= isset($_GET['page'])?$_GET['page']:"";
 
 if($page=="" || $page=="1")
 {
@@ -40,7 +45,18 @@ include "topheader.php";
       <!-- End Navbar -->
       <div class="content">
         <div class="container-fluid">
-        
+          <?php
+            if(isset($_GET['error']))
+            {
+                $error = $_GET['error'];
+                require_once '../error.php';
+            }
+            if(isset($_GET['success']))
+            {
+                $success = $_GET['success'];
+                require_once '../success.php';
+            }
+          ?>
         
          <div class="col-md-14">
             <div class="card ">
@@ -61,15 +77,15 @@ include "topheader.php";
 
                         while(list($product_id,$image,$product_name,$price,$details,$p_qty,$cat_name)=mysqli_fetch_array($result))
                         {
-                        echo "<tr><td><img src='../product_images/$image' style='width:200px; height: 100px;px'></td>
+                        echo "<form action={$_SERVER['PHP_SELF']} method='POST'><tr><td><img src='../Assets/Images/Products/$image' style='width:200px; height: 100px;px'></td>
                         <td>$product_name</td>
                         <td>$price</td>
                         <td>$details</td>
                         <td>$p_qty</td>
                         <td>$cat_name</td>
-                        <td><a class=' btn btn-success' href='clothes_list.php?PRODUCT_ID=$product_id&action=delete'>Delete</a></td>
-                        <td><a class=' btn btn-success' href='#'>Edit</a></td>
-                        </tr>";
+                        <td><button type='submit' name='deleteProduct' class='btn btn-success' value='{$product_id}'>Delete</button></td>
+                        <td><a class='btn btn-success' href='addproduct.php?id={$product_id}'>Edit</a></td>
+                        </tr></form>";
                         }
 
                         ?>

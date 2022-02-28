@@ -1,5 +1,16 @@
 <?php
-session_start();
+if(!isset($_SESSION))
+{
+  session_start();
+}
+if(!isset($_SESSION['email']))
+{
+  echo "<script>window.location.href='../index.php'</script>";
+}
+if($_SESSION['ROLE']!="ADMIN")
+{
+  echo "<script>window.location.href='../index.php'</script>";
+}
 include("db.php");
 error_reporting(0);
 
@@ -9,6 +20,20 @@ if(isset($_POST['orderAccepted']))
 {
   $order_id=$_POST['orderAccepted'];
   $sql = "SELECT status_id FROM orderstatus WHERE status = 'ACCEPTED'";
+  $result = mysqli_query($con,$sql);
+  $row = mysqli_fetch_assoc($result);
+  $status_id = $row['status_id'];
+  $sql = "UPDATE orders SET status = $status_id WHERE order_id = {$order_id}";
+  $result = mysqli_query($con,$sql);
+  if($result);
+  {
+    echo "<script>window.location.href=order_request.php</script>";
+  }
+}
+if(isset($_POST['orderDeny']))
+{
+  $order_id=$_POST['orderDeny'];
+  $sql = "SELECT status_id FROM orderstatus WHERE status = 'REJECTED'";
   $result = mysqli_query($con,$sql);
   $row = mysqli_fetch_assoc($result);
   $status_id = $row['status_id'];
@@ -72,7 +97,7 @@ include "topheader.php";
                         <button class='btn btn-success' name='orderAccepted' value='{$order_id}'>Accept</button>
                         
                         </td>
-                        <td><a class=' btn btn-success' href='#'>DENY</a></td>
+                        <td><button class='btn btn-success' name='orderDeny' value='{$order_id}'>Deny</button></td>
                         </tr><form/>";
                         }
 

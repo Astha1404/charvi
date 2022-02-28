@@ -9,6 +9,10 @@
     }
 ?>
 <div class="d-flex justify-content-end">
+    <?php
+    if($_SESSION['ROLE']!="ADMIN")
+    {
+    ?>
     <a href="cart.php" class="text-decoration-none text-light p-0 position-relative">
         <span class="d-flex justify-content-center align-items-center flex-row">
         <i class="bi bi-bag-check fs-1"></i>
@@ -27,6 +31,9 @@
             <?php echo $num; ?>
         </span>
     </a>
+    <?php
+    }
+    ?>
     <a href="#userDashboard" data-bs-toggle="offcanvas" class="text-decoration-none text-light mx-4">
         <span class="d-flex justify-content-center align-items-center flex-row">
             <i class="bi bi-person-circle fs-1"></i>

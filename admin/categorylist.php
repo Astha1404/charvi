@@ -1,12 +1,30 @@
 <?php
-session_start();
+if(!isset($_SESSION))
+{
+  session_start();
+}
+if(!isset($_SESSION['email']))
+{
+  echo "<script>window.location.href='../index.php'</script>";
+}
+if($_SESSION['ROLE']!="ADMIN")
+{
+  echo "<script>window.location.href='../index.php'</script>";
+}
 include("db.php");
 error_reporting(0);
-if(isset($_GET['action']) && $_GET['action']!="" && $_GET['action']=='delete')
+if(isset($_POST['deleteCategory']))
 {
-$category_id=$_GET['category_id'];
-
-mysqli_query($con,"delete from category where CATEGORY_ID='$category_id'")or die("query is incorrect...");
+  $sql = "DELETE FROM category WHERE category_id = {$_POST['deleteCategory']}";
+  $result = mysqli_query($con,$sql);
+  if($result)
+  {
+    echo "<script>window.location.href='categorylist.php?success=Category Deleted Successfully'</script>";
+  }
+  else
+  {
+    echo "<script>window.location.href='categorylist.php?error=Category Deletion Failed'</script>";
+  }
 }
 
 ///pagination
@@ -27,7 +45,18 @@ include "topheader.php";
       <!-- End Navbar -->
       <div class="content">
         <div class="container-fluid">
-        
+        <?php
+            if(isset($_GET['error']))
+            {
+                $error = $_GET['error'];
+                require_once '../error.php';
+            }
+            if(isset($_GET['success']))
+            {
+                $success = $_GET['success'];
+                require_once '../success.php';
+            }
+          ?>
         
          <div class="col-md-14">
             <div class="card ">
@@ -48,14 +77,14 @@ $result=mysqli_query($con,"select CATEGORY_ID,CATEGORY_NAME from category Limit 
 
 while(list($category_id,$category_name)=mysqli_fetch_array($result))
 {
-echo "<tr>
+echo "<form action={$_SERVER['PHP_SELF']} method='POST'><tr>
 <td>$category_id</td>
 <td>$category_name</td>
 
 <td>
 
-<a class=' btn btn-success' href='clothes_list.php?CATEGORY_ID=$category_id&action=delete'>Delete</a>
-</td></tr>";
+<button type='submit' name='deleteCategory' class='btn btn-success' value='{$category_id}'>Delete</button>
+</td></tr></form>";
 }
 
 ?>

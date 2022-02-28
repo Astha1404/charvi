@@ -1,5 +1,16 @@
 <?php
-session_start();
+if(!isset($_SESSION))
+{
+  session_start();
+}
+if(!isset($_SESSION['email']))
+{
+  echo "<script>window.location.href='../index.php'</script>";
+}
+if($_SESSION['ROLE']!="ADMIN")
+{
+  echo "<script>window.location.href='../index.php'</script>";
+}
 include("db.php");
 include "sidenav.php";
 include "topheader.php";
@@ -18,7 +29,30 @@ $role_id=$_POST['role'];*/
 #mysqli_close($con);
 #}
 
-
+if(isset($_POST['addAdmin']))
+{
+  $email = $_POST['email'];
+  $sql = "SELECT * FROM user WHERE email = '{$email}'";
+  $result = mysqli_query($con,$sql);
+  if(mysqli_num_rows($result)==1)
+  {
+    $sql = "SELECT * FROM role WHERE role_name = 'ADMIN'";
+    $result = mysqli_query($con,$sql);
+    $row = mysqli_fetch_assoc($result);
+    $admin = $row['ROLE_ID'];
+    $sql = "UPDATE user SET role = {$admin} WHERE email = '{$email}'";
+    $result = mysqli_query($con,$sql);
+    if($result)
+    {
+      $success = "Admin Added Successfully";
+      echo "<script>window.location.href='Addadmin.php?success={$success}'</script>";
+    }
+  }
+  else
+  {
+    echo "<script>window.location.href='Addadmin.php?error=User Email Not Found'</script>";
+  }
+}
 ?>
       <!-- End Navbar -->
       <div class="content">
@@ -31,43 +65,13 @@ $role_id=$_POST['role'];*/
                   <p class="card-category">Admin profile</p>
                 </div>
                 <div class="card-body">
-                  <form action="" method="post" name="form" enctype="multipart/form-data">
+                  <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" name="form" enctype="multipart/form-data">
                     <div class="row">
-                      
-                    <!--  <div class="col-md-3">
-                        <div class="form-group bmd-form-group">
-                          <label class="bmd-label-floating"> User Id</label>
-                          <input type="text" id="user_id" name="user_id" class="form-control" required>
-                        </div>
-                      </div>-->
-                      <div class="col-md-4">
-                        <div class="form-group bmd-form-group">
-                          <label class="bmd-label-floating">Admin Name</label>
-                          <input type="text" name="user_name" id="user_name"  class="form-control" required>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-6">
+                      <div class="col-12">
                         <div class="form-group bmd-form-group">
                           <label class="bmd-label-floating">Email</label>
                           <input type="email" name="email" id="email" class="form-control" required>
                         </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group bmd-form-group">
-                          <label class="bmd-label-floating">Password</label>
-                          <input type="password" id="password" name="password" class="form-control" required>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-12">
-                        <div class="form-group bmd-form-group">
-                          <label class="bmd-label-floating">phone number</label>
-                          <input type="text" id="phone" name="phone" class="form-control" required>
-                        </div>
-                      </div>
                     </div>
                    <!--   <div class="col-md-4">
                         <div class="form-group bmd-form-group">
@@ -75,10 +79,9 @@ $role_id=$_POST['role'];*/
                           <input type="text" name="country" id="country" class="form-control" required>
                         </div>
                       </div>-->
-                      
                     </div>
                     <div class="card-footer">
-                  <button type="submit" id="btn_save" name="btn_save" required class="btn btn-fill btn-primary">Update Admin</button>
+                    <button type="submit" id="addAdmin" name="addAdmin" class="btn btn-fill btn-primary">Update Admin</button>
                    </div>
                    
                   </form>
@@ -90,5 +93,15 @@ $role_id=$_POST['role'];*/
         
     
 <?php
+if(isset($_GET['error']))
+{
+    $error = $_GET['error'];
+    require_once '../error.php';
+}
+if(isset($_GET['success']))
+{
+    $success = $_GET['success'];
+    require_once '../success.php';
+}
 include "footer.php";
 ?>
