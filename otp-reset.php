@@ -34,12 +34,12 @@
 
             if(!$mail->send()) {
                 $error='OTP could not be sent. Server Unreachable !';
-                header("Location: /charvi/login.php?error={$error} & otperror=1 & mailerror=1");
+                echo "<script>window.location.href='login.php?error={$error} & otperror=1 & mailerror=1';</script>";
             }
             else
             {
                 $success="OTP is being send to {$_SESSION['Remail']}";
-                header("Location: /charvi/login.php?success={$success}&otpsuccess=1");
+                echo "<script>window.location.href='login.php?success={$success}&otpsuccess=1';</script>";
             }
         }
 ?>
@@ -63,6 +63,7 @@
     }
     else
     {
-        header('Location: /charvi/login.php');
+        echo "<script>window.location.href='login.php';</script>";
+        
     }
 ?>

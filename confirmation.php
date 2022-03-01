@@ -48,7 +48,11 @@
                         $row1 = mysqli_fetch_assoc($result1);
                         $company = $row1['company_name'];
                         $orderQty = $row['quantity'];
-                        $sql = "INSERT INTO `orders`(`ORDER_ID`, `PRODUCT_ID`, `QTY`, `USER_ID`, `STATUS`) VALUES (NULL,'{$productId}','{$orderQty}','{$_SESSION['userId']}','1')";
+                        $sqltemp = "SELECT address_id FROM cart WHERE user_id = {$_SESSION['userId']} AND product_id = {$productId}";
+                        $resulttemp = mysqli_query($con,$sqltemp);
+                        $rowtemp = mysqli_fetch_assoc($resulttemp);
+                        $addressId = $rowtemp['address_id'];
+                        $sql = "INSERT INTO `orders`(`ORDER_ID`, `PRODUCT_ID`, `QTY`, `USER_ID`, `STATUS`, `ADDRESS_ID`) VALUES (NULL,'{$productId}','{$orderQty}','{$_SESSION['userId']}','1',{$addressId})";
                         $temp = mysqli_query($con,$sql);
                         if($temp)
                         {
@@ -130,8 +134,64 @@
             }
     ?>
         <div class="container text-center">
-        <h4 class="text-center">Total Amount : <?php echo $sum;?>,  Payment Method : <?php echo "COD"?></h4>
-        <button type="submit" name="confirm" value ="confirm" class="btn btn-success my-2">Confirm Order</button>
+        <div class="container text-center w-50 my-4">
+                        <div class="card bg-dark">
+                            <h2 class="card-head text-light py-2">Amount Payable</h2>
+                            <div class="card-body bg-dark p-0">
+                                <table class="table table-responsive table-dark">
+                                  <thead>
+                                    <tr>
+                                      <th scope="col">No.</th>
+                                      <th scope="col">Item Name</th>
+                                      <th scope="col">Quantity</th>
+                                      <th scope="col">Total Price</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                <?php
+                                    $userId = $_SESSION['userId'];
+                                    $sql = "SELECT * FROM cart WHERE user_id = '{$userId}'";
+                                    $result = mysqli_query($con,$sql);
+                                    $totalSum = 0;
+                                    if(mysqli_num_rows($result)>0)
+                                    {
+                                        $i = 1;
+                                        while(($row=mysqli_fetch_assoc($result))!=null)
+                                        {
+                                            $sql = "SELECT * FROM product WHERE product_id={$row['product_id']}";
+                                            $result1 = mysqli_query($con,$sql);
+                                            if(mysqli_num_rows($result1)>0)
+                                            {
+                                                $row1 =  mysqli_fetch_assoc($result1);
+                                                $name = $row1['PRODUCT_NAME'];
+                                                $price = $row1['PRICE'];
+                                                $orderQty = $row['quantity'];
+                                                $price = $orderQty*$price;
+                                                $totalSum += $price;
+                                                echo "<tr>
+                                                <th scope='row'>{$i}</th>
+                                                <td>{$name}</td>
+                                                <td>{$orderQty}</td>
+                                                <td>{$price}</td>
+                                              </tr>";
+                                              $i++;
+                                            }
+                                        }
+                                    }
+                                ?>
+                                      
+                                      <th colspan="3" scope="row">Sub Total</th>
+                                      <td><?php echo $totalSum; ?></td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                            </div>
+                            <div class="card-footer">
+                                <h2 class="text-light py-0">Payment : COD</h2>
+                                <button type="submit" name="confirm" value ="confirm" class="btn btn-success my-2">Confirm Order</button>
+                            </div>
+                        </div>
+                    </div>
         </div>
     <?php
         }

@@ -95,7 +95,7 @@
                                             <button class="btn btn-lg btn-close p-0" type="submit" name="removeCart" value="<?php echo $productId; ?>"></button>
                                         </div>
                                         <h5>Product Quantity :<?php echo $qty; ?>  gm, Company : <?php echo $company; ?>, Category : <?php echo $category; ?></h5>
-                                        <h5 class="d-inline">Quantity : </h5><input type="number" name="qty<?php echo $productId?>" value="<?php echo $orderQty; ?>" class="form-control w-25 d-inline"/>
+                                        <h5 class="d-inline">Quantity : </h5><input type="number" name="qty<?php echo $productId?>" id="cartqty" value="<?php echo $orderQty; ?>" class="form-control w-25 d-inline"/>
                                     </div>
                                 </div>
                             </div>
@@ -104,6 +104,60 @@
                     }
                 }
         ?>
+                    <div class="container text-center w-50 my-4">
+                        <div class="card bg-dark">
+                            <h2 class="card-head text-light py-2">Subtotal</h2>
+                            <div class="card-body bg-dark p-0">
+                                <table class="table table-responsive table-dark">
+                                  <thead>
+                                    <tr>
+                                      <th scope="col">No.</th>
+                                      <th scope="col">Item Name</th>
+                                      <th scope="col">Quantity</th>
+                                      <th scope="col">Total Price</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                <?php
+                                    $userId = $_SESSION['userId'];
+                                    $sql = "SELECT * FROM cart WHERE user_id = '{$userId}'";
+                                    $result = mysqli_query($con,$sql);
+                                    $totalSum = 0;
+                                    if(mysqli_num_rows($result)>0)
+                                    {
+                                        $i = 1;
+                                        while(($row=mysqli_fetch_assoc($result))!=null)
+                                        {
+                                            $sql = "SELECT * FROM product WHERE product_id={$row['product_id']}";
+                                            $result1 = mysqli_query($con,$sql);
+                                            if(mysqli_num_rows($result1)>0)
+                                            {
+                                                $row1 =  mysqli_fetch_assoc($result1);
+                                                $name = $row1['PRODUCT_NAME'];
+                                                $price = $row1['PRICE'];
+                                                $orderQty = $row['quantity'];
+                                                $price = $orderQty*$price;
+                                                $totalSum += $price;
+                                                echo "<tr>
+                                                <th scope='row'>{$i}</th>
+                                                <td>{$name}</td>
+                                                <td>{$orderQty}</td>
+                                                <td>{$price}</td>
+                                              </tr>";
+                                              $i++;
+                                            }
+                                        }
+                                    }
+                                ?>
+                                      
+                                      <th colspan="3" scope="row">Sub Total</th>
+                                      <td><?php echo $totalSum; ?></td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
                     <div class="container text-center my-4">
                         <button class="btn btn-success" type="submit" name="orderNow">Order Now</button>
                     </div>

@@ -135,7 +135,7 @@
             $like = false;
         }
 
-        echo "<div class='col-md-6 col-sm-12 col-12 mx-auto bg-primary overflow-hidden m-0 p-0'>
+        echo "<div class='col-md-6 col-sm-12 col-12 mx-auto overflow-hidden m-0 p-0'>
                 <div class='position-relative'>
                     <img src='{$product_images}{$img}' class='img-fluid w-100'>";
                     if($like)

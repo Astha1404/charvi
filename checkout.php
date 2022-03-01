@@ -18,6 +18,7 @@
         {
             header('Location: /charvi/index.php');
         }
+        
     ?>
         <div class="container-fluid p-0">
             <h1 class="text-center p-4 text-light bg-dark">Check Out</h1>
@@ -57,14 +58,11 @@
         ?>
                         <div class="container">
                             <div class="d-flex bg-light rounded-3 p-4 my-2" id="#temp">
-                                <!-- Image -->
                                 <img
                                     src="<?php echo $product_images.$img; ?>"
-                                    alt="John Doe"
                                     class="me-3 rounded-circle"
                                     style="width: 60px; height: 60px;"
                                 />
-                                <!-- Body -->
                                 <div class="w-100">
                                     <div class="d-flex justify-content-between align-items-center">
                                         <h5 class="fw-bold" name="productName" id="productId"><?php echo $name; ?></h5>
@@ -79,6 +77,62 @@
         <?php
                     }
                 }
+        ?>
+                <div class="container text-center w-50 my-4">
+                        <div class="card bg-dark">
+                            <h2 class="card-head text-light py-2">Subtotal</h2>
+                            <div class="card-body bg-dark p-0">
+                                <table class="table table-responsive table-dark">
+                                  <thead>
+                                    <tr>
+                                      <th scope="col">No.</th>
+                                      <th scope="col">Item Name</th>
+                                      <th scope="col">Quantity</th>
+                                      <th scope="col">Total Price</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                <?php
+                                    $userId = $_SESSION['userId'];
+                                    $sql = "SELECT * FROM cart WHERE user_id = '{$userId}'";
+                                    $result = mysqli_query($con,$sql);
+                                    $totalSum = 0;
+                                    if(mysqli_num_rows($result)>0)
+                                    {
+                                        $i = 1;
+                                        while(($row=mysqli_fetch_assoc($result))!=null)
+                                        {
+                                            $sql = "SELECT * FROM product WHERE product_id={$row['product_id']}";
+                                            $result1 = mysqli_query($con,$sql);
+                                            if(mysqli_num_rows($result1)>0)
+                                            {
+                                                $row1 =  mysqli_fetch_assoc($result1);
+                                                $name = $row1['PRODUCT_NAME'];
+                                                $price = $row1['PRICE'];
+                                                $orderQty = $row['quantity'];
+                                                $price = $orderQty*$price;
+                                                $totalSum += $price;
+                                                echo "<tr>
+                                                <th scope='row'>{$i}</th>
+                                                <td>{$name}</td>
+                                                <td>{$orderQty}</td>
+                                                <td>{$price}</td>
+                                              </tr>";
+                                              $i++;
+                                            }
+                                        }
+                                    }
+                                ?>
+                                      
+                                      <th colspan="3" scope="row">Sub Total</th>
+                                      <td><?php echo $totalSum; ?></td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+        <?php
             }
         ?>
             <div class="container text-center my-4">

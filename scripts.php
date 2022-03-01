@@ -2,5 +2,6 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="Assets/Javascripts/owl.carousel.js"></script>
 <script src="Assets/Javascripts/carousel.js"></script>
+<script src="Assets/Javascripts/cart.js"></script>
 <script src="Assets/Javascripts/menu-list.js"></script>
 <script src="Assets/Javascripts/menu-list-kachriyu.js"></script>

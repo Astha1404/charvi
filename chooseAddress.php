@@ -72,7 +72,16 @@
         }
         if(isset($_POST['checkOutAddress']))
         {
-            header('Location: /charvi/checkout.php');
+            $sql = "UPDATE cart SET address_id = {$_POST['checkOutAddress']} WHERE user_id = {$_SESSION['userId']}";
+            $result = mysqli_query($con,$sql);
+            if($result)
+            {
+                header("Location: /charvi/checkout.php");
+            }
+            else
+            {
+                header("Location: /charvi/index.php?error=Can't Place Order Now");
+            }
         }
         
         require 'navbar.php';
