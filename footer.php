@@ -1,7 +1,7 @@
 <footer>
     <div class="container-fluid d-flex flex-wrap footer">
         <div class="col-md-3 col-lg-3 col-sm-12 text-center text-md-start">
-            <h2 class="text-secondary py-2 text-center">Company Name</h2>
+            <img src="Assets/Images/FooterLogo.jpg" alt="" class="img-fluid h-25>
             <p class="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod ut minima neque, tempore deserunt earum odio voluptas sunt porro in, nam vero excepturi consequatur odit quia ex? Animi, architecto dignissimos.</p>
         </div>
         <div class="col-md-3 col-lg-3 col-sm-4 col-12 py-2 d-flex flex-column footer-links text-md-start">
