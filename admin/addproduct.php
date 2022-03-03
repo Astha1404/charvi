@@ -29,7 +29,7 @@ if(isset($_POST['addProduct']))
   $result = mysqli_query($con,$sql);
   if($result)
   {
-      move_uploaded_file($tmp_img,"../Assets/Images/Products/{$img}");
+    move_uploaded_file($_FILES['image']['tmp_name'],"../Assets/Images/Products/{$img}");
   }
   else
   {
