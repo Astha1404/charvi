@@ -44,7 +44,7 @@ color:white;
       Tip 2: you can also add an image using data-image tag
   -->
       <div class="logo">
-        <a href="" class="simple-text logo-normal">
+        <a href="" class="simple-text logo-normal fw-bold text-light">
             Shree Umiya Gruh Udhayog 
         </a>
       </div>
