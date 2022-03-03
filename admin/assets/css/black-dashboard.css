@@ -1629,7 +1629,7 @@ fieldset[disabled] .btn-link.active {
   border-radius: 0.4285rem;
   color: rgba(255, 255, 255, 0.8);
   line-height: normal;
-  font-size: 0.8571em;
+  font-size: 2 em;
   -webkit-transition: color 0.3s ease-in-out, border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
   -moz-transition: color 0.3s ease-in-out, border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
   -o-transition: color 0.3s ease-in-out, border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
@@ -2209,14 +2209,6 @@ textarea.form-control:active {
   color: #222a42;
 }
 
-button,
-input,
-optgroup,
-select,
-textarea {
-  font-family: "Poppins";
-}
-
 .card h1,
 .card h2,
 .card h3,
@@ -2294,7 +2286,7 @@ h4.title+.category,
 
 h5,
 .h5 {
-  font-size: 0.8125rem;
+  font-size: 1.2em;
   line-height: 1.4em;
   margin-bottom: 15px;
   font-weight: 400;
@@ -2302,7 +2294,7 @@ h5,
 
 h6,
 .h6 {
-  font-size: 0.75rem;
+  font-size: 1.2em;
   font-weight: 400;
   text-transform: uppercase;
   font-weight: 600;
@@ -2352,7 +2344,7 @@ p.description {
 }
 
 .card-category {
-  font-size: 0.75rem;
+  font-size: 1.2em;
 }
 
 .text-primary,
@@ -2445,8 +2437,7 @@ pre {
 body {
   background: #1e1e2d;
   color: #222a42;
-  font-size: 14px;
-  font-family: "Poppins";
+  font-size: 15px;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
 }
@@ -2725,7 +2716,7 @@ a[data-toggle="collapse"][aria-expanded="true"] .caret,
   content: "\ea1b";
   top: 0px;
   text-align: center;
-  font-size: 14px;
+  font-size: 16px;
   opacity: 0;
   color: #FFFFFF;
   font-weight: 700;
@@ -2749,13 +2740,13 @@ a[data-toggle="collapse"][aria-expanded="true"] .caret,
 
 .form-check input[type="checkbox"]:checked+.form-check-sign::after {
   opacity: 1;
-  font-size: 10px;
+  font-size: 15px;
   margin-top: 0;
 }
 
 .form-check input[type="checkbox"]+.form-check-sign::after {
   opacity: 0;
-  font-size: 10px;
+  font-size: 15px;
   margin-top: 0;
 }
 
@@ -2945,7 +2936,7 @@ a[data-toggle="collapse"][aria-expanded="true"] .caret,
   margin-left: 17px;
   margin-top: -15px;
   text-transform: uppercase;
-  font-size: 1rem;
+  font-size:2rem;
 }
 
 .navbar .navbar-toggle button:focus,
@@ -2976,7 +2967,7 @@ a[data-toggle="collapse"][aria-expanded="true"] .caret,
   width: 6px;
   position: absolute;
   text-align: center;
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 800;
   top: 10px;
   right: 10px;
@@ -3244,7 +3235,7 @@ a[data-toggle="collapse"][aria-expanded="true"] .caret,
 
 .dropdown-menu .dropdown-item,
 .bootstrap-select .dropdown-menu.inner li a {
-  font-size: 0.8571em;
+  font-size: 1.2rem;
   padding-top: .6rem;
   padding-bottom: .6rem;
   margin-top: 5px;
@@ -3707,7 +3698,7 @@ img {
 
 .table>thead>tr>th {
   border-bottom-width: 1px;
-  font-size: 12px;
+  font-size: 16px;
   text-transform: uppercase;
   font-weight: 700;
   border: 0;
@@ -4145,7 +4136,7 @@ table.tablesorter thead tr .headerSortDown {
   padding: 0.5rem 0;
   display: block;
   white-space: nowrap;
-  font-size: 1em;
+  font-size: 0.9em;
   color: #FFFFFF;
   text-decoration: none;
   font-weight: 400;
@@ -4767,7 +4758,7 @@ table.tablesorter thead tr .headerSortDown {
 }
 
 .card label {
-  font-size: 0.8571em;
+  font-size: 1.2rem;
   margin-bottom: 5px;
 }
 
@@ -5317,8 +5308,7 @@ table.tablesorter thead tr .headerSortDown {
       top: 6px;
       -moz-transform: rotate(145deg);
     }
-    75% {G
-      -moz-transform: rotate(130deg);
+    75% {G-moz-transform: rotate(130deg);
     }
     100% {
       -moz-transform: rotate(135deg);

@@ -8,6 +8,13 @@
         {
             session_start();
         }
+        if(isset($_SESSION['ROLE']))
+        {
+          if($_SESSION['ROLE']=="ADMIN")
+          {
+              echo "<script>window.location.href='Admin/index.php'</script>";
+          }
+        }
     ?>
     <nav class="navbar navbar-expand-md navbar-dark">
           <a class="navbar-brand m-2" href="index.php">

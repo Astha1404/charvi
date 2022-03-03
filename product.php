@@ -18,7 +18,7 @@
         {
             if(!isset($_SESSION['email']))
             {
-                header('location: /charvi/login.php');
+                echo "<script>window.location.href='login.php';</script>";
             }
             else
             {
@@ -29,7 +29,7 @@
                 $result = mysqli_query($con,$sql);
                 if($result)
                 {
-                    header("location: /charvi/product.php?id={$id}");
+                    echo "<script>window.location.href='product.php?id={$id}';</script>";
                 }
             }
         }
@@ -44,23 +44,27 @@
             unset($_POST);
             if(mysqli_num_rows($result)==0)
             {
+                if(!isset($_SESSION['email']))
+                {
+                    echo "<script>window.location.href='login.php';</script>";
+                }
                 $sql1 = "INSERT INTO `cart`(`user_id`, `product_id`, `quantity`) VALUES ('{$userId}','{$pid}','{$qty}')";
                 $result = mysqli_query($con,$sql1);
                 if($result)
                 {
                     $success = "Product is Added To Your Cart Successfully";
-                    header("Location: /charvi/product.php?id={$pid} & success={$success}");
+                    echo "<script>window.location.href='product.php?id={$pid} & success={$success}';</script>";
                 }
                 else
                 {
                     $error = "Can't Add This Product To Your Cart Right Now";
-                    header("Location: /charvi/product.php?id={$pid} & error={$error}");
+                    echo "<script>window.location.href='product.php?id={$pid} & error={$error}';</script>";
                 }
             }
             else
             {
                 $error = "The Product is Already in Your Cart";
-                header("Location: /charvi/product.php?id={$pid} & error={$error}");
+                echo "<script>window.location.href='product.php?id={$pid} & error={$error}';</script>";
             }
         }
         require_once 'navbar.php';
@@ -94,7 +98,7 @@
     }
     if(isset($_GET['like']) && !isset($_SESSION['email']))
     {
-        header("Location: /charvi/login.php");
+        echo "<script>window.location.href='login.php';</script>";
     }
     
     $sql = "SELECT * FROM product WHERE product_id = {$_GET['id']}";

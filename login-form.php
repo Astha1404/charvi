@@ -23,7 +23,7 @@
             </div>
             <div class="col-md-12 col-sm-12 col-12 mb-4 d-flex justify-content-center gap-4">
                 <button type="submit" name="loginsubmit" value="loginsubmit" class="btn btn-success px-4">Login</button>
-                <a href="login.php?forget=1" name="reset" value="reset" class="btn btn-primary">Forget Password ?</a>
+                <a href="login.php?forget=1" name="reset" value="reset" class="btn btn-primary">Forgot Password ?</a>
             </div>
         </form>
     </div>

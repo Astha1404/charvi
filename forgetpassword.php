@@ -11,7 +11,7 @@
 
 <section class="my-4">
     <div class="container col-md-6 col-sm-12 col-12">
-        <h1 class="text-center">Forget Password</h1>
+        <h1 class="text-center">Forgot Password</h1>
         <form action="login.php" method="post" class="bg-light d-flex flex-wrap justify-content-center p-4 p-md-0 p-sm-0 need-validation">
             <div class="m-4 form-floating col-md-8 col-sm-12 col-11">
                 <input type="email" class="form-control" id="userName" name="userName" placeholder="User Name" required>

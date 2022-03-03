@@ -40,6 +40,12 @@ if(isset($_POST['addAdmin']))
     $result = mysqli_query($con,$sql);
     $row = mysqli_fetch_assoc($result);
     $admin = $row['ROLE_ID'];
+    $sql = "SELECT * FROM user WHERE email = '{$email}' AND role = {$admin}";
+    $result = mysqli_query($con,$sql);
+    if(mysqli_num_rows($result)==1)
+    {
+      echo "<script>window.location.href='Addadmin.php?error={$email} is Already Admin'</script>";
+    }
     $sql = "UPDATE user SET role = {$admin} WHERE email = '{$email}'";
     $result = mysqli_query($con,$sql);
     if($result)
