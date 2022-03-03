@@ -2,7 +2,7 @@
     <h1 class="display-6 text-secondary text-center mb-4"><span class="border-bottom border-5 mb-4">Kachriyu</span></h1>
     <div class="menulist-carousel-kachriyu owl-carousel owl-theme">
         <?php 
-            $sql = "SELECT `PRODUCT_ID`, `PRODUCT_NAME`, `PRICE`, `DESCRIPTION`, `QUANTITY`, `IMAGE` FROM product WHERE `CATEGORY_ID` = (SELECT CATEGORY_ID FROM category WHERE category_name = 'KACHRIYU') LIMIT 5";
+            $sql = "SELECT `PRODUCT_ID`, `PRODUCT_NAME`, `PRICE`, `DESCRIPTION`, `QUANTITY`, `IMAGE` FROM product WHERE `CATEGORY_ID` = (SELECT CATEGORY_ID FROM category WHERE category_name = 'KACHARIYU') LIMIT 5";
             $result = mysqli_query($con,$sql);
             if($result)
             {
