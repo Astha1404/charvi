@@ -85,8 +85,8 @@ include "topheader.php";
                         {
                           $amount=$price * $p_qty ;
                           $sql = "SELECT * FROM ADDRESS WHERE address_id = {$address_id}";
-                          $result = mysqli_query($con,$sql);
-                          $row = mysqli_fetch_assoc($result);
+                          $result2 = mysqli_query($con,$sql);
+                          $row = mysqli_fetch_assoc($result2);
                           $address =  $row['HOUSE_NO'].", ".$row['BUILDING_NAME'].", ".$row['LANDMARK'].", ".$row['AREA'].", ".$row['CITY'].", ".$row['STATE'].", ".$row['PINCODE'];
                         
                         echo "<form action ={$_SERVER['PHP_SELF']} method='POST'><tr><td>$order_id</td>
