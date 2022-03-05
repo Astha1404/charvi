@@ -95,12 +95,6 @@ echo "<form action={$_SERVER['PHP_SELF']} method='POST'><tr>
 </div>
 <nav aria-label="Page navigation example">
 <ul class="pagination">
-<li class="page-item">
-<a class="page-link" href="#" aria-label="Previous">
-<span aria-hidden="true">&laquo;</span>
-<span class="sr-only">Previous</span>
-</a>
-</li>
 <?php 
 //counting paging
 
@@ -117,12 +111,6 @@ for($b=1; $b<=$a;$b++)
 <?php	
 }
 ?>
-<li class="page-item">
-<a class="page-link" href="#" aria-label="Next">
-<span aria-hidden="true">&raquo;</span>
-<span class="sr-only">Next</span>
-</a>
-</li>
 </ul>
 </nav>
 
@@ -133,6 +121,3 @@ for($b=1; $b<=$a;$b++)
 
 </div>
 </div>
-<?php
-include "footer.php";
-?>     

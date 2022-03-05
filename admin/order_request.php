@@ -83,6 +83,8 @@ include "topheader.php";
 
                         while(list($order_id,$user_id,$user_name,$product_id,$product_name,$price,$quantity,$p_qty,$status)=mysqli_fetch_array($result))
                         {
+                          $amount=$price * $p_qty ;
+
                         
                         echo "<form action ={$_SERVER['PHP_SELF']} method='POST'><tr><td>$order_id</td>
                         <td>$user_id</td>
@@ -91,7 +93,8 @@ include "topheader.php";
                         <td>$product_name</td>
                         <td>$price</td>
                         <td>$quantity</td>
-                        <td>$p_qty</td>
+                        <td>$p_qty</td> 
+                        <td>$amount</td>
                         <td>$status</td>
                         <td>
                         <button class='btn btn-success' name='orderAccepted' value='{$order_id}'>Accept</button>
@@ -109,12 +112,6 @@ include "topheader.php";
             </div>
             <nav aria-label="Page navigation example">
               <ul class="pagination">
-                <li class="page-item">
-                  <a class="page-link" href="#" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                    <span class="sr-only">Previous</span>
-                  </a>
-                </li>
                  <?php 
                      //counting paging
 
@@ -131,12 +128,7 @@ include "topheader.php";
                 <?php	
 }
 ?>
-                <li class="page-item">
-                  <a class="page-link" href="#" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                    <span class="sr-only">Next</span>
-                  </a>
-                </li>
+                
               </ul>
             </nav>
             

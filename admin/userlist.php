@@ -11,8 +11,19 @@ if($_SESSION['ROLE']!="ADMIN")
 {
   echo "<script>window.location.href='../index.php'</script>";
 }
-include("db.php");
+///pagination
+$page= isset($_GET['page'])?$_GET['page']:"";
 
+if($page=="" || $page=="1")
+{
+$page1=0;	
+}
+else
+{
+$page1=($page*10)-10;	
+} 
+
+include("db.php");
 include "sidenav.php";
 include "topheader.php";
 ?>
@@ -46,7 +57,27 @@ include "topheader.php";
                 <div class="ps__rail-x" style="left: 0px; bottom: 0px;"><div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__rail-y" style="top: 0px; right: 0px;"><div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div></div></div>
               </div>
             </div>
+            <nav aria-label="Page navigation example">
+              <ul class="pagination">
+                 <?php 
+                     //counting paging
+
+                $paging=mysqli_query($con,"select USER_ID from user");
+                $count=mysqli_num_rows($paging);
+
+                $a=$count/10;
+                $a=ceil($a);
+                
+                for($b=1; $b<=$a;$b++)
+                {
+                ?> 
+                <li class="page-item"><a class="page-link" href="userlist.php?page=<?php echo $b;?>"><?php echo $b." ";?></a></li>
+                <?php	
+}
+?>
+              </ul>
+            </nav>
+ 
           </div>
-         <?php
-include "footer.php";
-?>     
+</div>
+</div>

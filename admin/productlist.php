@@ -13,7 +13,6 @@ if($_SESSION['ROLE']!="ADMIN")
 }
 include("db.php");
 
-///pagination
 
 if(isset($_POST['deleteProduct']))
 {
@@ -29,6 +28,8 @@ if(isset($_POST['deleteProduct']))
   }
 }
 
+
+///pagination
 $page= isset($_GET['page'])?$_GET['page']:"";
 
 if($page=="" || $page=="1")
@@ -96,12 +97,6 @@ include "topheader.php";
             </div>
             <nav aria-label="Page navigation example">
               <ul class="pagination">
-                <li class="page-item">
-                  <a class="page-link" href="#" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                    <span class="sr-only">Previous</span>
-                  </a>
-                </li>
                  <?php 
                      //counting paging
 
@@ -118,12 +113,6 @@ include "topheader.php";
                 <?php	
 }
 ?>
-                <li class="page-item">
-                  <a class="page-link" href="#" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                    <span class="sr-only">Next</span>
-                  </a>
-                </li>
               </ul>
             </nav>
             
@@ -134,6 +123,4 @@ include "topheader.php";
           
         </div>
       </div>
-      <?php
-include "footer.php";
-?>     
+ 

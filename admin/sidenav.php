@@ -89,29 +89,33 @@ color:white;
             </a>
           </li>
           <li class="nav-item ">
+            <a class="nav-link" href="order_deliver.php">
+              <i class="material-icons"></i>
+              <p>Deliver order</p>
+            </a>
+          </li>
+          <li class="nav-item ">
             <a class="nav-link" href="addproduct.php">
               <i class="material-icons"></i>
               <p>Add Products</p>
             </a>
           </li>
-         <!---- <li class="nav-item ">
+         <li class="nav-item ">
             <a class="nav-link" href="addcategory.php">
               <i class="material-icons"></i>
               <p>Add Category</p>
             </a>
-          </li>----->
-          <!--<li class="nav-item ">
-            <a class="nav-link" href="#">
-              <i class="material-icons"></i>
-              <p>Add Offer</p>
-            </a>
-          </li>-->
-         
-          
+          </li>   
           <li class="nav-item ">
             <a class="nav-link" href="view_feedback.php">
               <i class="material-icons"></i>
-              <p>View Feedback</p>
+              <p>View Feedback & Rating</p>
+            </a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="view_wishlist.php">
+              <i class="material-icons"></i>
+              <p>View Wishlist</p>
             </a>
           </li>
           <li class="nav-item ">
@@ -120,13 +124,7 @@ color:white;
               <p>Logout</p>
             </a>
           </li>
-          <!-- <li class="nav-item active-pro ">
-                <a class="nav-link" href="./upgrade.html">
-                    <i class="material-icons">unarchive</i>
-                    <p>Upgrade to PRO</p>
-                </a>
-            </li> -->
-        </ul>
+           </ul>
       </div>
     </div>
     

@@ -2,7 +2,7 @@
     <div class="container-fluid d-flex flex-wrap footer">
         <div class="col-md-3 col-lg-3 col-sm-12 text-center text-md-start">
             <img src="Assets/Images/FooterLogo.jpg" alt="" class="img-fluid h-25>
-            <p class="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod ut minima neque, tempore deserunt earum odio voluptas sunt porro in, nam vero excepturi consequatur odit quia ex? Animi, architecto dignissimos.</p>
+            <p class="text-center"></p>
         </div>
         <div class="col-md-3 col-lg-3 col-sm-4 col-12 py-2 d-flex flex-column footer-links text-md-start">
             <h4 class="text-secondary py-2 text-center">Useful Links</h4>
@@ -32,7 +32,8 @@
         </div>
         <div class="col-md-3 col-lg-3 col-sm-4 col-12 py-2 text-center text-md-start">
             <h4 class="text-secondary py-2 text-center">Address</h4>
-            <P class="text-center">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, omnis!</P>
+            <P class="text-center">Samved industrie plot-1,opp.lubby company vadsar-khatraj road kalol,Gandhinagar-382721
+</P>
         </div>
     </div>
     <div class="container-fluid footer">

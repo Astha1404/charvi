@@ -103,7 +103,7 @@ include "topheader.php";
                  
                   <div class="col-md-12">
                       <div class="form-group">
-                        <label>Quantity</label>
+                        <label>Unit Of Mesurment</label>
                         <input type="number" id="quantity" name="quantity" required class="form-control" >
                       </div>
                     </div>
