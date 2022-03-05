@@ -48,9 +48,9 @@ if(isset($_POST['orderDeliver']))
               </div>
               <div class="card-body">
                 <div class="table-responsive ps">
-                  <table class="table tablesorter " id="page1">
+                  <table class="table tablesorter table-responsive " id="page1">
                     <thead class=" text-primary">
-                      <tr><th>Order ID<th>User Id</th><th>Name</th><th>Product Id</th><th>product Name</th><th>Price</th><th>Unit Of Maserment</th><th>Quantity</th><th>Total Amount</th><th> Status</th></tr></thead>
+                      <tr><th>Order ID<th>User Id</th><th>Name</th><th>Product Id</th><th>product Name</th><th>Price</th><th>Unit Of Maserment</th><th>Quantity</th><th>Total Amount</th><th>Delivery Address</th><th> Status</th><th>Deliver</th></tr></thead>
                     <tbody>
                       <?php 
                         $sql = "SELECT * FROM ORDERS WHERE STATUS = 2";
@@ -78,6 +78,12 @@ if(isset($_POST['orderDeliver']))
                           $row3 = mysqli_fetch_assoc($result3);
                           $status = $row3['STATUS'];
                           $amount=$price*$p_qty;
+                          $address_id = 21;
+                          $sql4 = "SELECT * FROM ADDRESS WHERE address_id = {$address_id}";
+                          $result4 = mysqli_query($con,$sql4);
+                          $row = mysqli_fetch_assoc($result4);
+                          $address =  $row['HOUSE_NO'].", ".$row['BUILDING_NAME'].", ".$row['LANDMARK'].", ".$row['AREA'].", ".$row['CITY'].", ".$row['STATE'].", ".$row['PINCODE'];
+                
                         echo "<form action ={$_SERVER['PHP_SELF']} method='POST'><tr><td>$order_id</td>
                         <td>$user_id</td>
                         <td>$user_name</td>
@@ -87,6 +93,7 @@ if(isset($_POST['orderDeliver']))
                         <td>$quantity gm / PKT</td>
                         <td>$p_qty</td>
                         <td>$amount</td>
+                        <td>$address</td>
                         <td>$status</td>
                         <td>
                         <button class='btn btn-success' name='orderDeliver' value='{$order_id}'>Deliver</button>

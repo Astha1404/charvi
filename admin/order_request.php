@@ -72,19 +72,22 @@ include "topheader.php";
                 
               </div>
               <div class="card-body">
-                <div class="table-responsive ps">
-                  <table class="table tablesorter " id="page1">
+                <div class="ps">
+                  <table class="table tablesorter table-responsive" id="page1">
                     <thead class=" text-primary">
-                      <tr><th>Order ID<th>User Id</th><th>Name</th><th>Product Id</th><th>product Name</th><th>Price</th><th>Unit Of Maserment</th><th>Quantity</th><th>Total Amount</th><th>Current Status</th></tr></thead>
+                      <tr><th>Order ID<th>User Id</th><th>Name</th><th>Product Id</th><th>product Name</th><th>Price</th><th>Unit Of Maserment</th><th>Quantity</th><th>Total Amount</th><th>Delivery Address</th><th>Current Status</th><th>Accept</th><th>Deny</th></tr></thead>
                     <tbody>
                       <?php 
 
-                        $result=mysqli_query($con,"SELECT  orders.ORDER_ID,orders.USER_ID,user.USER_NAME,orders.PRODUCT_ID,product.PRODUCT_NAME,product.PRICE,product.QUANTITY,orders.QTY,orderstatus.STATUS FROM orders  INNER JOIN product ON orders.PRODUCT_ID=product.PRODUCT_ID INNER JOIN user ON orders.USER_ID=user.USER_ID INNER JOIN orderstatus ON orders.STATUS=orderstatus.STATUS_ID WHERE orderstatus.status = 'REQUESTED' LIMIT $page1,10")or die ("query 1 incorrect.....");
+                        $result=mysqli_query($con,"SELECT  orders.ADDRESS_ID,orders.ORDER_ID,orders.USER_ID,user.USER_NAME,orders.PRODUCT_ID,product.PRODUCT_NAME,product.PRICE,product.QUANTITY,orders.QTY,orderstatus.STATUS FROM orders  INNER JOIN product ON orders.PRODUCT_ID=product.PRODUCT_ID INNER JOIN user ON orders.USER_ID=user.USER_ID INNER JOIN orderstatus ON orders.STATUS=orderstatus.STATUS_ID WHERE orderstatus.status = 'REQUESTED' LIMIT $page1,10")or die ("query 1 incorrect.....");
 
-                        while(list($order_id,$user_id,$user_name,$product_id,$product_name,$price,$quantity,$p_qty,$status)=mysqli_fetch_array($result))
+                        while(list($address_id,$order_id,$user_id,$user_name,$product_id,$product_name,$price,$quantity,$p_qty,$status)=mysqli_fetch_array($result))
                         {
                           $amount=$price * $p_qty ;
-
+                          $sql = "SELECT * FROM ADDRESS WHERE address_id = {$address_id}";
+                          $result = mysqli_query($con,$sql);
+                          $row = mysqli_fetch_assoc($result);
+                          $address =  $row['HOUSE_NO'].", ".$row['BUILDING_NAME'].", ".$row['LANDMARK'].", ".$row['AREA'].", ".$row['CITY'].", ".$row['STATE'].", ".$row['PINCODE'];
                         
                         echo "<form action ={$_SERVER['PHP_SELF']} method='POST'><tr><td>$order_id</td>
                         <td>$user_id</td>
@@ -95,6 +98,7 @@ include "topheader.php";
                         <td>$quantity</td>
                         <td>$p_qty</td> 
                         <td>$amount</td>
+                        <td>$address</td>
                         <td>$status</td>
                         <td>
                         <button class='btn btn-success' name='orderAccepted' value='{$order_id}'>Accept</button>
