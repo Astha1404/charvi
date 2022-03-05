@@ -6,16 +6,19 @@ include "topheader.php";
 
 ///pagination
 
-$page=$_GET['page'];
-
-if($page=="" || $page=="1")
+if(isset($_GET['page']))
 {
-$page1=0;	
+  $page=$_GET['page'];
+  
+  if($page=="" || $page=="1")
+  {
+  $page1=0;	
+  }
+  else
+  {
+  $page1=($page*7)-7;	
+  } 
 }
-else
-{
-$page1=($page*7)-7;	
-} 
 if(isset($_POST['orderDeliver']))
 {
   $order_id=$_POST['orderDeliver'];
@@ -50,11 +53,30 @@ if(isset($_POST['orderDeliver']))
                       <tr><th>Order ID<th>User Id</th><th>Name</th><th>Product Id</th><th>product Name</th><th>Price</th><th>Unit Of Maserment</th><th>Quantity</th><th>Total Amount</th><th> Status</th></tr></thead>
                     <tbody>
                       <?php 
+                        $sql = "SELECT * FROM ORDERS WHERE STATUS = 2";
+                        $result=mysqli_query($con,$sql)or die ("query 1 incorrect.....");
 
-                        $result=mysqli_query($con,"SELECT  orders.ORDER_ID ,orders.USER_ID,user.USER_NAME,orders.PRODUCT_ID,product.PRODUCT_NAME,product.PRICE,product.QUANTITY,orders.QTY,orderstatus.STATUS FROM orders  INNER JOIN product ON orders.PRODUCT_ID=product.PRODUCT_ID INNER JOIN user ON orders.USER_ID=user.USER_ID INNER JOIN orderstatus ON orders.STATUS=orderstatus.STATUS_ID where orders.status=3 Limit $page1,7")or die ("query 1 incorrect.....");
-
-                        while(list($order_id,$user_id,$user_name,$product_id,$product_name,$price,$quantity,$p_qty,$status)=mysqli_fetch_array($result))
+                        while($row = mysqli_fetch_assoc($result))
                         {
+                          $order_id = $row['ORDER_ID'];
+                          $user_id = $row['USER_ID'];
+                          $sql1 = "SELECT * FROM user WHERE user_id = {$user_id}";
+                          $result1 = mysqli_query($con,$sql1);
+                          $row1 = mysqli_fetch_assoc($result1);
+                          $user_name  = $row1['USER_NAME'];
+                          $product_id = $row['PRODUCT_ID'];
+                          $sql2 = "SELECT * FROM product WHERE product_id = {$product_id}";
+                          $result2 = mysqli_query($con,$sql2);
+                          $row2 = mysqli_fetch_assoc($result2);
+                          $product_name = $row2['PRODUCT_NAME'];
+                          $price = $row2['PRICE'];
+                          $p_qty = $row['QTY'];
+                          $quantity = $row2['QUANTITY'];
+                          $status = $row['STATUS'];
+                          $sql3 = "SELECT * FROM orderstatus WHERE status_id = {$status}";
+                          $result3 = mysqli_query($con,$sql3);
+                          $row3 = mysqli_fetch_assoc($result3);
+                          $status = $row3['STATUS'];
                           $amount=$price*$p_qty;
                         echo "<form action ={$_SERVER['PHP_SELF']} method='POST'><tr><td>$order_id</td>
                         <td>$user_id</td>
@@ -62,7 +84,7 @@ if(isset($_POST['orderDeliver']))
                         <td>$product_id</td>
                         <td>$product_name</td>
                         <td>$price</td>
-                        <td>$quantity</td>
+                        <td>$quantity gm / PKT</td>
                         <td>$p_qty</td>
                         <td>$amount</td>
                         <td>$status</td>
