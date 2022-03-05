@@ -23,8 +23,7 @@
         {
             if($_POST['password']!=$_POST['confirmPassword'])
             {
-                $error = "Password Didn't Match";
-                echo "<script>window.location.href='register.php?error={$error}';</script>";
+                echo "<script>window.location.href=`register.php?error=Password Didn't Match`;</script>";
             }
             else
             {
